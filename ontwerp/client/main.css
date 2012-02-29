@@ -1,0 +1,17 @@
+body
+{
+	margin:0px;
+	padding:0px;
+}
+.topbar
+{
+	height: 48px ;
+	width: 100% ;
+	background-image: url( "./img/topbar-bg.gif" ) ;
+	background-color: #6699cc ;
+	text-align:center;
+}
+.topbar img
+{
+	margin-top:13px;
+}
