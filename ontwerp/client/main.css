@@ -2,6 +2,8 @@ body
 {
 	margin:0px;
 	padding:0px;
+	font-family:Arial;
+	font-size:13px;
 }
 .topbar
 {
@@ -14,4 +16,74 @@ body
 .topbar img
 {
 	margin-top:13px;
+}
+ul.homelist
+{
+	margin:0px;
+	padding-left:5%;
+	padding-right:5%;
+	padding-top:5%;
+}
+ul.homelist li
+{
+	background-image: url( "img/button-bg.gif" ) ;
+	height:90px;
+	list-style:none;
+	width:45%;
+	float:left;
+	margin:0px;
+	padding:0px;
+	margin-left:10%;
+	margin-bottom:3%;
+}
+ul.homelist li:first-child
+{
+	margin-left:0px;
+}
+ul.homelist li.newrule
+{
+	clear:both;
+	margin-left:0px;
+}
+ul.homelist li img.left
+{
+	float:left;
+}
+ul.homelist li a
+{
+	display:block;
+	height:55px;
+	text-align:center;
+	vertical-align: middle;
+	text-decoration:none;
+}
+.icon
+{
+	margin-top:25px;
+}
+ul.homelist li p
+{
+	display:block;
+	width:100%;
+	margin-top:0px;
+	padding-top:5px;
+	height:100%;
+	color:#333333;
+	text-decoration:none;
+}
+ul.homelist li img.right
+{
+	float:right;
+}
+ul.homelist li div
+{
+	clear:both;
+}
+.footer
+{
+	background-image:url("img/footer-bg.gif");
+	width:100%;
+	position:absolute;
+	bottom:0px;
+	height:60px;
 }
