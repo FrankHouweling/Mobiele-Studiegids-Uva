@@ -86,4 +86,15 @@ ul.homelist li div
 	position:absolute;
 	bottom:0px;
 	height:60px;
+	background-color:#6699cc;
+}
+.footer .footeritem
+{
+	width:50%;
+	display:block;
+	float:left;
+}
+.footer #splitter
+{
+	float:left;
 }
