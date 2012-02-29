@@ -98,3 +98,11 @@ ul.homelist li div
 {
 	float:left;
 }
+.footer .footeritem
+{
+	text-align:center;
+}
+.footer .footeritem img.button
+{
+	margin-top:20px;
+}
