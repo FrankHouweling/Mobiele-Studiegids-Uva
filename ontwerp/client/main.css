@@ -107,3 +107,15 @@ ul.homelist li div
 {
 	margin-top:20px;
 }
+.datalist
+{
+	clear:both;
+	padding:3%;
+	padding-top:20px;
+	height:430px;
+	overflow:scroll;
+}
+.ui-listview-filter
+{
+	margin-bottom:10px;
+}
