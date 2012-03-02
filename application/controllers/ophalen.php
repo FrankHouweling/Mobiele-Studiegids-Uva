@@ -97,9 +97,11 @@ class Ophalen extends CI_Controller {
 	 * 
 	 */
 	
-	private function inputInDb( array $studieData )
+	private function inputInDb( $studieData )
 	{
-		// TODO
+		
+		$inputData	=	array();
+		
 	}
 	
 }
