@@ -119,3 +119,27 @@ ul.homelist li div
 {
 	margin-bottom:10px;
 }
+h1
+{
+	margin:0px;
+	padding:0px;
+	padding-top:12px;
+	font-size:19px;
+	font-weight:bold;
+	color:#fff;
+	 text-shadow: #6699cc 1px 1px, #6699cc -1px -1px
+}
+.backbutton
+{
+	float:left;
+	position:absolute;
+	background-color:#fff;
+	border-radius: 15px;
+	color:#000;
+	margin:8px;
+}
+.backbutton a
+{
+	padding:8px;
+	display:block;
+}
