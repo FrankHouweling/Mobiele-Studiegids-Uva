@@ -2,6 +2,13 @@
 
 class Ophalen extends CI_Controller {
 
+	/*
+	 * 
+	 * Public function Ophalen();
+	 * 
+	 * When called gets new data from the online XML-feed and updates the DB.
+	 * 
+	 */
 	public function ophalen()
 	{
 		
@@ -24,15 +31,71 @@ class Ophalen extends CI_Controller {
 		
 	}
 	
+	/*
+	 * 
+	 * Private function emptyDb();
+	 * 
+	 * Empty's the database.
+	 * 
+	 */
+	
 	private function emptyDb()
 	{
 		// TODO
 	}
 	
+	/*
+	 * 
+	 * Private function getAllStudies();
+	 * 
+	 * Opens XML-feed and downloads all the studies.
+	 * 
+	 */
+	
 	private function getAllStudies()
 	{
-		// TODO
+		
+		// Links to all the studies...
+		$links		=	array();
+		
+		// All the study data, for the return
+		$studies	=	array();
+		
+		$data		=	file_get_contents(  "http://www.hodexer.nl/hodex/uva/hodexDirectory.xml" );
+		
+		$linkdata	= new SimpleXMLElement( $data );
+
+		for( $i = 0; $i < count($linkdata->hodexResource); $i++ )
+		{
+			
+			$links[]	=	$linkdata->hodexResource[$i]->hodexResourceURL;
+			
+		}
+		
+		// Now for all those links get all the data
+		
+		foreach( $links as $link )
+		{
+			
+			$data	=	file_get_contents( $link );
+			
+			$studiedata = new SimpleXMLElement( $data );
+			
+			$studies[]	=	$studiedata;
+			
+		}
+		
+		return $studies;
+		
 	}
+	
+	/*
+	 * 
+	 * Private function inputInDb();
+	 * 
+	 * Puts a new studie in the DB.
+	 * 
+	 */
 	
 	private function inputInDb( array $studieData )
 	{
