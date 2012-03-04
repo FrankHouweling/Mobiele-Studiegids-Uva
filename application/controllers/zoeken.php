@@ -24,11 +24,7 @@ class Zoeken extends CI_Controller {
 	    $this->load->model('faculteiten');
 	}
 	
-	public function index() {
-	    $this->load->view('homepage');
-	    $this->load->view('allestudies');
-     
-	 }
+	
 	 
 	
 }
