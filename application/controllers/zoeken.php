@@ -1,14 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Zoeken extends CI_Controller {
-
-	/**
+/**
 	 * Index Page for this controller.
 	 *
 	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
+	 * 		http://example.com/index.php/zoeken
 	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
+	 * 		http://example.com/index.php/zoeken/index
 	 *	- or -
 	 * Since this controller is set as the default controller in 
 	 * config/routes.php, it's displayed at http://example.com/
@@ -18,16 +16,22 @@ class Zoeken extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 	 
-	 /*
-	public function index() {
-	    $this->load->view('TODO')
-     */
-	 
-	public function allestudies()
+class Zoeken extends CI_Controller {
+
+	public function __Construct()
 	{
-		echo "Allo!";
+	    parent::__Construct();
+	    $this->load->model('faculteiten');
 	}
+	
+	public function index() {
+	    $this->load->view('homepage');
+	    $this->load->view('allestudies');
+     
+	 }
+	 
+	
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+/* End of file zoeken.php */
+/* Location: ./application/controllers/zoeken.php */
