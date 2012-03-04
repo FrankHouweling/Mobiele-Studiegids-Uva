@@ -4,14 +4,7 @@
 </head>
 <body>
 
-<ul>
 
-<?php foreach($studies as $studie) ?>
-
-<li><?=$studie?></li>
-
-<?php endforeach; ?>
-</ul>
 
 </body>
 </html>

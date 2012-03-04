@@ -36,24 +36,12 @@
 		
 		<div class="datalist">
 			<ul data-role="listview" data-inset="true" data-filter="true" >
-				<li><a href="#">Informatiekunde</a></li>
-				<li><a href="#">Informatica</a></li>
-				<li><a href="#">Kunstmatige Intelligentie</a></li>
-				<li><a href="#">Informatiekunde</a></li>
-				<li><a href="#">Informatica</a></li>
-				<li><a href="#">Kunstmatige Intelligentie</a></li>
-				<li><a href="#">Informatiekunde</a></li>
-				<li><a href="#">Informatica</a></li>
-				<li><a href="#">Kunstmatige Intelligentie</a></li>
-				<li><a href="#">Informatiekunde</a></li>
-				<li><a href="#">Informatica</a></li>
-				<li><a href="#">Kunstmatige Intelligentie</a></li>
-				<li><a href="#">Informatiekunde</a></li>
-				<li><a href="#">Informatica</a></li>
-				<li><a href="#">Kunstmatige Intelligentie</a></li>
-				<li><a href="#">Informatiekunde</a></li>
-				<li><a href="#">Informatica</a></li>
-				<li><a href="#">Kunstmatige Intelligentie</a></li>
+			
+                    <?php foreach($studies as $studie) ?>
+
+                    <li><a href="#"><?=$studie?></a></li>
+
+                    <?php endforeach; ?>
 			</ul>
 		</div>
 		
