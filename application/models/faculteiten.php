@@ -8,7 +8,25 @@ class Faculteiten extends CI_Model {
         // Call the Model constructor
         parent::__construct();
     }
-
+    
+    /**
+     * Add faculteiten in faculteiten database
+     *
+     */
+    
+     private function add()
+     {
+        //TODO
+        foreach( $faculteiten as $faculty_name )
+		{
+			$this->inputInDb( $faculteiten );	
+		}
+     }
+    
+    /**
+     * get faculteiten from faculteiten database
+     *
+     */
 
     public function get_faculteiten()
     {
