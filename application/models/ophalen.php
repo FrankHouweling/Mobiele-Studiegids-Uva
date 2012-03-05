@@ -85,22 +85,51 @@
 			$data["studyAdviseMinimum"]	=	$studieobject->programClassification->studyAdviseMinimum;	//	TODO!
 			$data["studyAdvisePeriod"]	=	$studieobject->programClassification->studyAdvisePeriod;	//	TODO! ik neem aan in maanden?
 			
-			//$data["programDescription"]	=	$studieobject->programDescriptions->programDescription
+			
+			// Loop through all program descriptions..
 			
 			foreach( $studieobject->programDescriptions->programDescription as $description )
 			{
 				
-				// TODO
+				$values	=	$description->attributes();
 				
-				$description->attributes()
-				
-				
-				if(  as $attribute => $value )
+				// Look for the dutch program description..
+				if( $values["lang"] = "nl" )
 				{
+					
+					$data["programDescription"]	=	$description;
 					
 				}
 				
 			}
+			
+			// If there are multiple names for multiple languages, look for the dutch one...
+			
+			if( is_array( $studieobject->programDescriptions->programName ) )
+			{
+			
+				$programName	=	"";
+				
+				foreach( $studieobject->programDescriptions->programName as $tmpprog )
+				{
+					
+					// If the language of the programname is dutch, put it in the specified variable.
+					if( $tmpprog->attributes()->lang == "nl" )
+					{
+						
+						$programName	=	$tmpprog;
+						
+					}
+					
+				}
+				
+			}
+			else
+			{
+				$programName		=	$studieobject->programDescriptions->programName;	
+			}
+			
+			$data["programName"]	=	$programName;
 				
 			// Put data in database
 	        $this->db->insert('project1', $data);
