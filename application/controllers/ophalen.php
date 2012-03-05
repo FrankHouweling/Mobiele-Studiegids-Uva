@@ -25,7 +25,7 @@ class Ophalen extends CI_Controller {
 		
 		// Eerst database leeg maken
 		
-		$this->emptyDb();
+		$this->fubar->emptyDb();
 		
 		// Daarna de XML-bestand omzetten in een lijst met studies
 		
@@ -49,12 +49,6 @@ class Ophalen extends CI_Controller {
 	 * Empty's the database.
 	 * 
 	 */
-	
-	private function emptyDb()
-	{
-		// TODO
-		return true;
-	}
 	
 	/*
 	 * 

@@ -8,7 +8,7 @@
 	        parent::__construct();
 	    }
 		
-		function inputindb( $studieobject )
+		public function inputindb( $studieobject )
 		{
 			// Create empty data array	
 			$data	=	array();
@@ -168,6 +168,16 @@
 			$this->db->insert( "faculteiten", array( "faculty_name" => $facultyName ) );
 			
 			return $this->db->insert_id();
+			
+		}
+		
+		public function emptyDb()
+		{
+			
+			$this->db->empty_table('faculteiten');
+			$this->db->empty_table('project1');
+			$this->db->empty_table('profielen');
+			$this->db->empty_table('profieleisen');
 			
 		}
 		
