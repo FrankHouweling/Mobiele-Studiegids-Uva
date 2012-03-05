@@ -88,20 +88,6 @@ class Ophalen extends CI_Controller {
 		return $studies;
 		
 	}
-	
-	/*
-	 * 
-	 * Private function inputInDb();
-	 * 
-	 * Puts a new studie in the DB.
-	 * 
-	 */
-	
-	private function inputInDb( $studieData )
-	{
-		
-		$inputData	=	array();
-		
-	}
+
 	
 }
