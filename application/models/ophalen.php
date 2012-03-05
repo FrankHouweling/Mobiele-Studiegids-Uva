@@ -15,7 +15,27 @@
 			
 			// Put data in array
 			
-			$data["degree"]				=	$studieobject->programClassification->degree;
+			switch( $studieobject->programClassification->degree )
+			{
+				
+				case "MA":
+					$degree	=	"MSc";	//	Master of Science
+				break;
+				case "BSc":
+					$degree	=	"BSc";	// Bachelor of Science
+				break;
+				case "BSa":
+					$degree	=	"BSa";	//	Bachelor of Arts, komt dat voor?
+				break;
+				case "certificate":
+					$degree	=	"CER";	//	Certificaat
+				break;
+				default:
+					$degree	=	"UNK";	//	unknown
+				break;
+			}
+			
+			$data["degree"]				=	$degree;
 			$data["financing"]			=	$studieobject->programClassification->financing;
 			
 			// TODO hieronder:
@@ -60,7 +80,27 @@
 				
 			}
 			
-			$data["studyAdvise"]	=	
+			$data["studyAdvise"]		=	true;	//	TODO!
+			$data["studyAdviseType"]	=	$studieobject->programClassification->studyAdviseType;	//	TODO!
+			$data["studyAdviseMinimum"]	=	$studieobject->programClassification->studyAdviseMinimum;	//	TODO!
+			$data["studyAdvisePeriod"]	=	$studieobject->programClassification->studyAdvisePeriod;	//	TODO! ik neem aan in maanden?
+			
+			//$data["programDescription"]	=	$studieobject->programDescriptions->programDescription
+			
+			foreach( $studieobject->programDescriptions->programDescription as $description )
+			{
+				
+				// TODO
+				
+				$description->attributes()
+				
+				
+				if(  as $attribute => $value )
+				{
+					
+				}
+				
+			}
 				
 			// Put data in database
 	        $this->db->insert('project1', $data);
