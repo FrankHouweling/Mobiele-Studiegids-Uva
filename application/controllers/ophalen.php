@@ -2,6 +2,15 @@
 
 class Ophalen extends CI_Controller {
 
+	public function __construct()
+   	{
+    	parent::__construct();
+   		// Your own constructor code
+   		
+   		$this->ophalen();
+   		
+    }
+
 	/*
 	 * 
 	 * Public function Ophalen();
@@ -12,6 +21,8 @@ class Ophalen extends CI_Controller {
 	public function ophalen()
 	{
 		
+		$this->load->model('Ophalen_model', 'fubar');
+		
 		// Eerst database leeg maken
 		
 		$this->emptyDb();
@@ -19,13 +30,13 @@ class Ophalen extends CI_Controller {
 		// Daarna de XML-bestand omzetten in een lijst met studies
 		
 		$studies	=	$this->getAllStudies();
-		
+
 		// En op het laatst alle studies doorlopen en in de DB zetten
 		
 		foreach( $studies as $studie )
 		{
 			
-			$this->inputInDb( $studie );
+			$this->fubar->inputInDb( $studie );
 			
 		}
 		
@@ -42,6 +53,7 @@ class Ophalen extends CI_Controller {
 	private function emptyDb()
 	{
 		// TODO
+		return true;
 	}
 	
 	/*
