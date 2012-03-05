@@ -130,9 +130,42 @@
 			}
 			
 			$data["programName"]	=	$programName;
+			
+			$data["facultyId"]		=	$this->getFacultyId( $studieobject->programFree->facultyId );
 				
 			// Put data in database
 	        $this->db->insert('project1', $data);
+			
+		}
+
+		private function getFacultyId( $facultyName )
+		{
+			
+			// First check if it already exists..
+			$result = $this->db->get_where('faculteiten', array('faculty_name', $facultyName) );
+			
+			if( $query->db->count_all_results() == 0 )	// TODO I don't know if this function works this way but let's try
+			{
+				
+				return $this->db-insertFaculty( $facultyName );
+				
+			}
+			else
+			{
+				
+				echo $result;
+				
+			}
+			
+		}
+		
+		private function insertFaculty( $facultyName )
+		{
+			
+			
+			$this->db->insert( "faculteiten", array( "faculty_name" => $facultyName ) );
+			
+			return $this->db->insert_id();
 			
 		}
 		
