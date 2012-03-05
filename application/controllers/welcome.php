@@ -23,6 +23,8 @@ class Welcome extends CI_Controller {
 		$this->load->view('homepage');
 		$this->load->view('footer');
 	}
+	
+	
 }
 
 /* End of file welcome.php */

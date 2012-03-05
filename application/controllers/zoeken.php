@@ -15,8 +15,7 @@ class Zoeken extends CI_Controller {
 	
 	public function Studies() 
 	{
-	    $data['studies'];
-	    $this->load->view('Homepage', $data);
+	    $this->load->view('Homepage', array("studies"=>"allestudies");
 	
 	}
 	
