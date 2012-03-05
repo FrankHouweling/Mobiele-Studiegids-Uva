@@ -1,6 +1,6 @@
 <?php
 
-	class Ophalenmodel extends CI_Model {
+	class Ophalen_model extends CI_Model {
 		
 		function __construct()
 	    {
@@ -35,31 +35,31 @@
 				break;
 			}
 			
-			$data["degree"]				=	$degree;
-			$data["financing"]			=	$studieobject->programClassification->financing;
+			$data["degree"]				=	(string)$degree;
+			$data["financing"]			=	(string)$studieobject->programClassification->financing;
 			
 			// TODO hieronder:
 			$data["numerusFixus"]		=	true;
 			
-			$data["￼￼programCredits"]		=	$studieobject->programClassification->programCredits;
-			$data["programDuration"]	=	$studieobject->programClassification->programDuration;	//	IN MONTHS!
-			$data["programForm"]		=	$studieobject->programClassification->programForm;		//	full-time or.. part-time?
-			$data["programLevel"]		=	$studieobject->programClassification->programLevel;		//	Bachelor of master
+			$data["programCredits"]		=	(string)$studieobject->programClassification->programCredits;
+			$data["programDuration"]	=	(string)$studieobject->programClassification->programDuration;	//	IN MONTHS!
+			$data["programForm"]		=	(string)$studieobject->programClassification->programForm;		//	full-time or.. part-time?
+			$data["programLevel"]		=	(string)$studieobject->programClassification->programLevel;		//	Bachelor of master
 			
-			$data["programType"]		=	$studieobject->programClassification->programType;
-			$data["startingYear"]		=	$studieobject->programClassification->startingYear;
+			$data["programType"]		=	(string)$studieobject->programClassification->programType;
+			$data["startingYear"]		=	(string)$studieobject->programClassification->startingYear;
 			
-			if( is_array( $data["studyCluster"] ) )
+			if( is_array( $studieobject->programClassification->studyCluster ) )
 			{
 				
 				// Multiple? Just get the first one!
-				$data["studyCluster"]		=	$studieobject->programClassification->studyCluster[0];		//	Bijv. health care
+				$data["studyCluster"]		=	(string)$studieobject->programClassification->studyCluster[0];		//	Bijv. health care
 				
 			}
 			else
 			{
 				
-				$data["studyCluster"]		=	$studieobject->programClassification->studyCluster;		//	Bijv. health care
+				$data["studyCluster"]		=	(string)$studieobject->programClassification->studyCluster;		//	Bijv. health care
 				
 			}
 						
@@ -74,16 +74,16 @@
 				{
 					
 					$highestpercentage					=	$instructionLanguage->percentage;
-					$data["mainInstructionLanguage"]	=	$instructionLanguage->languageCode;
+					$data["mainInstructionLanguage"]	=	(string)$instructionLanguage->languageCode;
 					
 				}	
 				
 			}
 			
 			$data["studyAdvise"]		=	true;	//	TODO!
-			$data["studyAdviseType"]	=	$studieobject->programClassification->studyAdviseType;	//	TODO!
-			$data["studyAdviseMinimum"]	=	$studieobject->programClassification->studyAdviseMinimum;	//	TODO!
-			$data["studyAdvisePeriod"]	=	$studieobject->programClassification->studyAdvisePeriod;	//	TODO! ik neem aan in maanden?
+			$data["studyAdviseType"]	=	(string)$studieobject->programClassification->studyAdviseType;	//	TODO!
+			$data["studyAdviseMinimum"]	=	(string)$studieobject->programClassification->studyAdviseMinimum;	//	TODO!
+			$data["studyAdvisePeriod"]	=	(string)$studieobject->programClassification->studyAdvisePeriod;	//	TODO! ik neem aan in maanden?
 			
 			
 			// Loop through all program descriptions..
@@ -97,7 +97,7 @@
 				if( $values["lang"] = "nl" )
 				{
 					
-					$data["programDescription"]	=	$description;
+					$data["programDescription"]	=	(string)$description;
 					
 				}
 				
@@ -126,15 +126,15 @@
 			}
 			else
 			{
-				$programName		=	$studieobject->programDescriptions->programName;	
+				$programName		=	(string)$studieobject->programDescriptions->programName;	
 			}
 			
-			$data["programName"]	=	$programName;
+			$data["programName"]	=	(string)$programName;
 			
-			$data["facultyId"]		=	$this->getFacultyId( $studieobject->programFree->facultyId );
+			$data["facultyId"]		=	$this->getFacultyId( (string)$studieobject->programFree->facultyId );
 				
-			// Put data in database
 	        $this->db->insert('project1', $data);
+			
 			
 		}
 
@@ -142,18 +142,20 @@
 		{
 			
 			// First check if it already exists..
-			$result = $this->db->get_where('faculteiten', array('faculty_name', $facultyName) );
+			$result = $this->db->query( "SELECT * FROM faculteiten WHERE faculty_name = '" . $facultyName . "'" );
 			
-			if( $query->db->count_all_results() == 0 )	// TODO I don't know if this function works this way but let's try
+			if( count($result->result_array()) == 0 )	// TODO I don't know if this function works this way but let's try
 			{
 				
-				return $this->db-insertFaculty( $facultyName );
+				return $this->insertFaculty( $facultyName );
 				
 			}
 			else
 			{
 				
-				echo $result;
+				$rst	=	 $result->result_array();
+				
+				return $rst[0]['id'];
 				
 			}
 			
