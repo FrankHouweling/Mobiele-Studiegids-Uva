@@ -41,9 +41,20 @@
 					{
 						?>
 								<div class="backbutton">
-									<a href="../../../../index.php">Home</a>
+									<a href="../../../../index.php">Vorige</a>
 								</div>
-							<h1><?php echo $pagetitle?></h1>
+							<h1>
+								<?php 
+									if( strlen($pagetitle) > 20 )
+									{
+										echo substr($pagetitle,0,17) . "...";
+									}
+									else
+									{
+										echo $pagetitle;
+									}
+								?>
+							</h1>
 						<?php	
 					}
 				?>
