@@ -44,14 +44,6 @@ class Ophalen extends CI_Controller {
 	
 	/*
 	 * 
-	 * Private function emptyDb();
-	 * 
-	 * Empty's the database.
-	 * 
-	 */
-	
-	/*
-	 * 
 	 * Private function getAllStudies();
 	 * 
 	 * Opens XML-feed and downloads all the studies.
