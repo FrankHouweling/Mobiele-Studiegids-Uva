@@ -19,6 +19,7 @@
 		function getStudie( $studieId )
 		{
 			
+			
 			$result 	= $this->db->query( "SELECT * FROM project1 WHERE id = '" . $studieId . "'" );
 			
 			$resultData	=	$result->result_array();

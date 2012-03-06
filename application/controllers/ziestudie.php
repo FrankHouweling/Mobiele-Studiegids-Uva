@@ -4,14 +4,19 @@ class Ziestudie extends CI_Controller {
 
 	public function __construct()
    	{
-    	parent::__construct();
    		
-		
-		// Here we check if there is an ID given and if its right..
+    	parent::__construct();
 		
 		$this->load->model('Ziestudie_model', 'fubar');
    		
-		$id		= $this->uri->segment(2, 0);
+    }
+	
+	public function studie()
+	{
+		
+		// Here we check if there is an ID given and if its right.
+   		
+		$id		= $this->uri->segment(3, 0);
 		
 		if( $id  == false )
 		{
@@ -26,13 +31,25 @@ class Ziestudie extends CI_Controller {
    		
    			$data		=	$this->zieStudie( $id );
 			
-			$this->load->view('header', array("page" => $data[0]["programName"] . " - Studie Bekijken"));
-			$this->load->view('ziestudie', $data);
-			$this->load->view('footer');
-			
+			if( $data !== false )
+			{
+				
+				$this->load->view('header', array("page" => $data[0]["programName"] . " - Studie Bekijken", "pagetitle"=> $data[0]["programName"]));
+				$this->load->view('ziestudie', $data[0]);
+				$this->load->view('footer');
+				
+			}
+			else
+			{
+				
+				// This studie does not exist
+				die( "404!" );	//	TODO!
+				return false;
+				
+			}
 		}
-   		
-    }
+		
+	}
 	
 	/*
 	 * 

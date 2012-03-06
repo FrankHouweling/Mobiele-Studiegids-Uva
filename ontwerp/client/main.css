@@ -127,7 +127,9 @@ h1
 	font-size:19px;
 	font-weight:bold;
 	color:#fff;
-	 text-shadow: #6699cc 1px 1px, #6699cc -1px -1px
+	text-shadow: #6699cc 1px 1px, #6699cc -1px -1px;
+	border:0px;
+	text-decoration:none;
 }
 .backbutton
 {
@@ -137,10 +139,13 @@ h1
 	border-radius: 15px;
 	color:#000;
 	margin:8px;
+	display:block;
 }
 .backbutton a
 {
-	padding:8px;
+	margin:0px;
+	padding:9px;
+	padding-top:0px;
 	display:block;
 }
 
@@ -152,4 +157,14 @@ h1
 .results
 {
     margin-top:20px;
+}
+.mcontent
+{
+	padding:10px;
+	padding-top:0px;
+	padding-bottom:10px;
+}
+.mcontent p
+{
+	font-size:15px;
 }
