@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<head>
-<title>Mobiele-Studiegids-Uva</title>
-</head>
-<body>
-
-
-
-</body>
-</html>
+<p>
+	
+	Some demo content to try it out.
+</p>
