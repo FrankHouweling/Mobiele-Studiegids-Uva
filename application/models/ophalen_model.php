@@ -38,8 +38,14 @@
 			$data["degree"]				=	(string)$degree;
 			$data["financing"]			=	(string)$studieobject->programClassification->financing;
 			
-			// TODO hieronder:
-			$data["numerusFixus"]		=	true;
+			if( empty( $studieobject->programClassification->numerusFixus ) )
+			{
+				$data["numerusFixus"]	=	false;
+			}
+			else
+			{
+				$data["numerusFixus"]	=	$studieobject->programClassification->numerusFixus;
+			}
 			
 			$data["programCredits"]		=	(string)$studieobject->programClassification->programCredits;
 			$data["programDuration"]	=	(string)$studieobject->programClassification->programDuration;	//	IN MONTHS!
