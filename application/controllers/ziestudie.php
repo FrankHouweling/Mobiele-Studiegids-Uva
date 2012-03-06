@@ -46,6 +46,7 @@ class Ziestudie extends CI_Controller {
 			
 			// Het weergeven enso
 			
+			
 		}
 		else
 		{
