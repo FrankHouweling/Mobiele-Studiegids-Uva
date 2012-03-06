@@ -24,7 +24,11 @@ class Ziestudie extends CI_Controller {
 			
 			$studieID	=	1;	//	TODO
    		
-   			$this->zieStudie( $id );
+   			$data		=	$this->zieStudie( $id );
+			
+			$this->load->view('header', array("page" => $data[0]["programName"] . " - Studie Bekijken"));
+			$this->load->view('ziestudie', $data);
+			$this->load->view('footer');
 			
 		}
    		
@@ -46,9 +50,7 @@ class Ziestudie extends CI_Controller {
 		if( $data !== false )
 		{
 			
-			$this->load->view('header', array("page"=> $data[0]["programName"] . " - Studie Bekijken"));
-			$this->load->view('ziestudie', $data);
-			$this->load->view('footer');
+			return $data;
 			
 		}
 		else
