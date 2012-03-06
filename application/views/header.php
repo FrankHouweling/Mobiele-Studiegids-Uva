@@ -40,7 +40,10 @@
 					else
 					{
 						?>
-							<h3><?=$page?></h3>
+								<div class="backbutton">
+									<a href="../../../../index.php">Home</a>
+								</div>
+							<h1><?php echo $pagetitle?></h1>
 						<?php	
 					}
 				?>
