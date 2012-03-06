@@ -41,18 +41,20 @@ class Ziestudie extends CI_Controller {
 	private function zieStudie( $studieID )
 	{
 		
-		if( $this->fubar->isStudie( $studieID ) )
+		$data	=	$this->fubar->getStudie( $studieID );
+		
+		if( $data !== false )
 		{
 			
-			// Het weergeven enso
-			
+			$this->load->view('header', array("page"=> $data[0]["programName"] . " - Studie Bekijken"));
+			$this->load->view('ziestudie', $data);
+			$this->load->view('footer');
 			
 		}
 		else
 		{
 			
-			die( "Geen geldige studie!" );	//	TODO: remove this
-			return false;
+			return false;	// Er bestaat geen studie met dat ID..
 			
 		}	
 		
