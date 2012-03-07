@@ -44,6 +44,18 @@
 		}
 	?>
 		</li>
+		<li>
+			Deze studie bestaat uit <u><?php echo $programCredits?></u> studiepunten.
+		</li>
+		<li>
+			Deze studie duurt <u><?php echo floor($programDuration/12)?></u> jaar en <?php echo $programDuration - ( floor($programDuration/12) * 12 ) ?> maanden.
+		</li>
+		<li>
+			Programmavorm: <u><?php echo $programForm?></u>.
+		</li>
+		<li>
+			Programmatype: <u><?php echo $programType?></u>.
+		</li>
 	</ul>
 	
 </div>
