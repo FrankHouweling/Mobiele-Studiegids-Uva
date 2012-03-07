@@ -169,3 +169,10 @@ h1
 {
 	font-size:15px;
 }
+.mcontent ul
+{
+	margin:0px;
+	padding:0px;
+	padding-left:20px;
+	font-size:15px;
+}

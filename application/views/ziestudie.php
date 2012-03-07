@@ -2,10 +2,11 @@
 	<h2><?php echo $programName?> (<?php echo $programLevel?>)</h2>
 	<h3>Omschrijving</h3>
 	<p>
-		￼<?php echo $programDescription;?>
+		￼<?php echo nl2br($programDescription);?>
 	</p>
 	<h3>Toelatingseisen &amp; kosten</h3>
-	<p>
+	<ul>
+		<li>
 	<?php
 		if( $numerusFixus == true )
 		{
@@ -21,7 +22,8 @@
 		}
 		
 	?>
-	<br />
+		</li>
+		<li>
 	<?php
 		
 		switch( $financing )
@@ -41,7 +43,8 @@
 			
 		}
 	?>
-	</p>
+		</li>
+	</ul>
 	
 </div>
-<div style="clear:both;"><br /><br /><br /></div>
+<div style="clear:both;"><br /><br /><br /><br /></div>
