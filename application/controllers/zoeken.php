@@ -6,16 +6,17 @@ class Zoeken extends CI_Controller {
 
 	public function __Construct()
 	{
-	    parent::__Construct();   
+	    parent::__Construct();  
+	    $this->load->model('Ophalen_model', 'fubar');
 	}
 	
 	public function allestudies()
 	{
 		
-		$data	=	array();	//	TODO!
+		$data	=	array("english", "informatiekunde");	
 		
 		$this->load->view( "header", array( "page" => "Alle Studies - Studies Zoeken", "pagetitle" => "Alle Studies" ) );
-		$this->load->view( "allestudies", $data);
+		$this->load->view( "allestudies", array("programName" => $data));
 		$this->load->view( "footer" );
 		
 	}

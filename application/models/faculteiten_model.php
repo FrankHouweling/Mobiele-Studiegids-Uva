@@ -1,7 +1,7 @@
 
 <?php
 
-class Faculteiten extends CI_Model {
+class Faculteiten_model extends CI_Model {
 
      public function __construct()
     {
