@@ -1,4 +1,5 @@
 <p>
 	
-	Some demo content to try it out.
+Hier kunt u alle Studies vinden: [test]
+
 </p>

@@ -27,7 +27,6 @@ class Ziestudie extends CI_Controller {
 		else
 		{
 			
-			$studieID	=	1;	//	TODO
    		
    			$data		=	$this->zieStudie( $id );
 			
