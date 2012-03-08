@@ -65,8 +65,6 @@ class Ziestudie extends CI_Controller {
 	private function shortToFull( $shortcode )
 	{
 		
-		die( $shortcode );
-		
 		switch( $shortcode )
 		{
 		
