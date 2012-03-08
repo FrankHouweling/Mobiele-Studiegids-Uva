@@ -57,10 +57,14 @@
 			Programmatype: <u><?php echo $programType?></u>.
 		</li>
 		<li>
+<<<<<<< HEAD
 			Eerstvolgende instroommogelijkheid: <?php echo $startingYear ?>
+=======
+			Eersvolgende instroommogelijkheid: <?php echo $startingYear ?>.
+>>>>>>> cc52f9023f2791f925907ef158f60e49192c7e13
 		</li>
 		<li>
-			Dit vak wordt vooral in het <?php echo $instructionLanguageFull?>
+			Dit vak wordt vooral in het <?php echo $instructionLanguageFull?>.
 		</li>
 	</ul>
 	
