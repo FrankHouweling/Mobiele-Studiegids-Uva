@@ -32,6 +32,10 @@ class Ziestudie extends CI_Controller {
 			
 			if( $data !== false )
 			{
+					
+				echo shortToFull( $data[0]["instructionLanguage"] );
+				
+				//$data[0]["instructionLanguageFull"]	=	shortToFull( $data[0]["instructionLanguage"] );
 				
 				$this->load->view('header', array("page" => $data[0]["programName"] . " - Studie Bekijken", "pagetitle"=> $data[0]["programName"]));
 				$this->load->view('ziestudie', $data[0]);
@@ -46,6 +50,44 @@ class Ziestudie extends CI_Controller {
 				return false;
 				
 			}
+		}
+		
+	}
+	
+	/*
+	 * 
+	 * Private function shortToFull
+	 * 
+	 * Makes a full name of the language-shortcode
+	 * 
+	 */
+	
+	private function shortToFull( $shortcode )
+	{
+		
+		die( $shortcode );
+		
+		switch( $shortcode )
+		{
+		
+			case "en":
+				
+				return "Engels";
+				
+			break;
+			
+			case "nl":
+				
+				return "Nederlands";
+				
+			break;
+			
+			default:
+				
+				return "Onbekend";
+				
+			break;
+			
 		}
 		
 	}
