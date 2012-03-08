@@ -56,6 +56,9 @@
 		<li>
 			Programmatype: <u><?php echo $programType?></u>.
 		</li>
+		<li>
+			Eersvolgende instroommogelijkheid: <?php echo $startingyear ?>
+		</li>
 	</ul>
 	
 </div>
