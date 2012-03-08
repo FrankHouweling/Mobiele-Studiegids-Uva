@@ -59,6 +59,9 @@
 		<li>
 			Eerstvolgende instroommogelijkheid: <?php echo $startingYear ?>
 		</li>
+		<li>
+			Dit vak wordt vooral in het <?php echo $instructionLanguageFull?>
+		</li>
 	</ul>
 	
 </div>
