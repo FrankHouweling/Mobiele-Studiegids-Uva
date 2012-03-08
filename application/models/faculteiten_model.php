@@ -30,10 +30,12 @@ class Faculteiten_model extends CI_Model {
 
     public function get_faculteiten()
     {
-        $this->db->select('id, faculty_name')->from('faculteiten');
-        return $this->db->get()->result();
+        //$this->db->select('id, faculty_name')->from('faculteiten');
+        //return $this->db->get()->result();
 
-
+         $query = $this->db->get_where('faculteiten');
+	     return $query->result_array();
+    
     }
 }
 

@@ -1,5 +1,10 @@
-<p>
+<div class="datalist">
+			<ul data-role="listview" data-inset="true" data-filter="true" >
+                     <?php foreach($faculty_name as $faculteit): ?>
 
-Hier kunt u studies vinden per faculteit: [test]
+                    <li><a href="#"><?=$faculteit['faculty_name']?></a></li>
 
-</p>
+                    <?php endforeach; ?>
+            </ul>
+		
+        </div>
