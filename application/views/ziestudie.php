@@ -57,10 +57,10 @@
 			Programmatype: <u><?php echo $programType?></u>.
 		</li>
 		<li>
-			Eersvolgende instroommogelijkheid: <?php echo $startingYear ?>
+			Eersvolgende instroommogelijkheid: <?php echo $startingYear ?>.
 		</li>
 		<li>
-			Dit vak wordt vooral in het <?php echo $instructionLanguageFull?>
+			Dit vak wordt vooral in het <?php echo $instructionLanguageFull?>.
 		</li>
 	</ul>
 	
