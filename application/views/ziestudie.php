@@ -4,7 +4,7 @@
 	<p>
 		￼<?php echo nl2br($programDescription);?>
 	</p>
-	<h3>Toelatingseisen &amp; kosten</h3>
+	<h3>Toelatingseisen &amp; Financiering</h3>
 	<ul>
 		<li>
 	<?php
@@ -57,7 +57,7 @@
 			Programmatype: <u><?php echo $programType?></u>.
 		</li>
 		<li>
-			Eersvolgende instroommogelijkheid: <?php echo $startingyear ?>
+			Eersvolgende instroommogelijkheid: <?php echo $startingYear ?>
 		</li>
 	</ul>
 	
