@@ -62,6 +62,13 @@
 		<li>
 			Dit vak wordt vooral in het <u><?php echo $instructionLanguageFull?></u>.
 		</li>
+		<li>
+			Eersvolgende instroommogelijkheid: <?php echo $startingYear ?>.
+
+		</li>
+		<li>
+			De taal van het vak is: <?php echo $instructionLanguageFull?>.
+		</li>
 	</ul>
 	
 </div>
