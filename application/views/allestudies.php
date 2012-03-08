@@ -1,11 +1,12 @@
-<p>
-	
-Hier kunt u alle Studies vinden: [test]
-                    <ul>
+
+		
+		<div class="datalist">
+			<ul data-role="listview" data-inset="true" data-filter="true" >
                      <?php foreach($programName as $studie): ?>
 
-                    <li><a href="#"><?=$studie?></a></li>
+                    <li><a href="#"><?=$studie['programName']?></a></li>
 
                     <?php endforeach; ?>
-                    </ul>
-</p>
+            </ul>
+		
+        </div>

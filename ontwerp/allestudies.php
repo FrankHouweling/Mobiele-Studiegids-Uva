@@ -39,7 +39,7 @@
 			
                     <?php foreach($studies as $studie) ?>
 
-                    <li><a href="#"><?=$studie?></a></li>
+                    <li><a href="#"><?=$studie["programName"]?></a></li>
 
                     <?php endforeach; ?>
 			</ul>

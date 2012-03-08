@@ -15,7 +15,10 @@
         
 		public function getall()
 		{
-		
+		   
+		    $query = $this->db->get_where('project1');
+	        return $query->result_array();
+		    
 		}
 }
 
