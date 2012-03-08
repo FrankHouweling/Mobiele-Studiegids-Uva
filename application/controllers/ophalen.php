@@ -63,7 +63,7 @@ class Ophalen extends CI_Controller {
 		
 		$linkdata	= new SimpleXMLElement( $data );
 
-		for( $i = 0; $i < count($linkdata->hodexResource); $i++ )
+		for( $i = 0; $i < count($linkdata->hodexResource); $i++ )	//	count($linkdata->hodexResource) (alle vakken.. is lekkerder om er een paar te doen)
 		{
 			
 			$links[]	=	$linkdata->hodexResource[$i]->hodexResourceURL;

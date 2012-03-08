@@ -73,19 +73,19 @@
 			
 			$highestpercentage	=	0;
 			
-			foreach( $studieobject->programClassification->instructionLanguage as $instructionLanguage )
+			foreach( $studieobject->programCurriculum->instructionLanguage as $instructionLanguage )
 			{
-			
+
 				if( $instructionLanguage->percentage > $highestpercentage )
 				{
 					
 					$highestpercentage					=	$instructionLanguage->percentage;
-					$data["mainInstructionLanguage"]	=	(string)$instructionLanguage->languageCode;
+					$data["instructionLanguage"]	=	(string)$instructionLanguage->languageCode;
 					
 				}	
 				
 			}
-			
+						
 			$data["studyAdvise"]		=	true;	//	TODO!
 			$data["studyAdviseType"]	=	(string)$studieobject->programClassification->studyAdviseType;	//	TODO!
 			$data["studyAdviseMinimum"]	=	(string)$studieobject->programClassification->studyAdviseMinimum;	//	TODO!
