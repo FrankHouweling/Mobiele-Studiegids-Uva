@@ -80,9 +80,11 @@
 		function getNeededVakkenByStudieId( $studieId )
 		{
 			
-			$get	=	$this->db->query( "SELECT * FROM needed_vakken WHERE studie_id = '" . $studieId . "'" );
+			$get		=	$this->db->query( "SELECT * FROM needed_vakken WHERE studie_id = '" . $studieId . "'" );
 			
-			$result	=	$get->result_array();
+			$result		=	$get->result_array();
+			
+			$returnAr	=	array();
 			
 			if( count( $result ) == 0 )
 			{
@@ -93,7 +95,45 @@
 			else
 			{
 				
-				//	TODO
+				foreach( $result as $res )
+				{
+					
+					$returnAr[]	=	$this->getVakNaamByVakId( $res['vak_id'] );
+					
+				}
+				
+				return $returnAr;
+				
+			}
+			
+			
+		}
+		
+		/*
+		 * 
+		 * Function getVakNaamByVakId( $vakId )
+		 * 
+		 * Function will return the name of the vak which's ID is given.
+		 * 
+		 */
+		
+		function getVakNaamByVakId( $vakId )
+		{
+			
+			$get	=	$this->db->query( "SELECT vak_name FROM vakken WHERE vak_id = '" . $vakId . "'" );
+			
+			$result	=	$get->result_array();
+			
+			if( count($result) !== 0 )
+			{
+				
+				return $result[0]['vak_name'];
+				
+			}
+			else
+			{
+			
+				return false;
 				
 			}
 			

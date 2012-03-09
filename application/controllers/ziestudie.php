@@ -53,6 +53,9 @@ class Ziestudie extends CI_Controller {
 					
 				}
 				
+				// get needed vakken..
+				$data[0]["neededVakken"]	=	$this->fubar->getNeededVakkenByStudieId( $data[0]["id"] );
+				
 				// Display this shit!
 				
 				$this->load->view('header', array("page" => $data[0]["programName"] . " - Studie Bekijken", "pagetitle"=> $data[0]["programName"]));

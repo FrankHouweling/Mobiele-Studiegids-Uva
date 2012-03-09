@@ -66,7 +66,20 @@
 			Deze studie wordt gegeven aan de volgende faculteit: <u><?php echo $facultyName?></u>.
 		</li>
 		<li>
-			Bij deze studie kun je instromen met de volgende profielen: <u><?php echo implode( $profielen, "</u>, <u>" )?></u>.
+		<?php
+			if( $neededVakken !== false ){
+		?>
+			Bij deze studie kun je instromen zolang je VWO-profiel o.a. uit deze vakken bestond: <u><?php echo implode( $neededVakken, "</u>, <u>" )?></u>.<br />
+			<small>(Bij Wiskunde hoeft er indien er meerdere vermeld zijn natuurlijk maar aan 1 vorm voldaan te zijn.)</small>
+		<?php
+			}
+			else
+			{
+		?>
+			Instromen kan met elk VWO profiel.
+		<?php
+			}
+		?>
 		</li>
 	</ul>
 	
