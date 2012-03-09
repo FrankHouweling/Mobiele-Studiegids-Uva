@@ -8,12 +8,20 @@
 	        parent::__construct();
 	    }
 		
+		/*
+		 * 
+		 * Public function inputindb( $studieobject )
+		 * 
+		 * Gets a object of a studie and then places it in the Database
+		 * 
+		 */
+		
 		public function inputindb( $studieobject )
 		{
 			// Create empty data array	
 			$data	=	array();
 			
-			$toegestaneExtraVakken	=	array( "wiskunde-A", "wiskunde-B", "natuurkunde", "scheikunde", "biologie", "hbo-propedeuse", "universitaire-bachelor");
+			$toegestaneExtraVakken	=	array( "wiskunde-A", "wiskunde-B", "natuurkunde", "scheikunde", "biologie", "hbo-propedeuse", "universitaire-bachelor", "latijn", "grieks");
 			
 			// Put data in array
 			
@@ -88,12 +96,16 @@
 				}	
 				
 			}
+				
+				
+			// Study advise has been canceled in this project
 						
+			/*
 			$data["studyAdvise"]		=	true;	//	TODO!
 			$data["studyAdviseType"]	=	(string)$studieobject->programClassification->studyAdviseType;	//	TODO!
 			$data["studyAdviseMinimum"]	=	(string)$studieobject->programClassification->studyAdviseMinimum;	//	TODO!
 			$data["studyAdvisePeriod"]	=	(string)$studieobject->programClassification->studyAdvisePeriod;	//	TODO! ik neem aan in maanden?
-			
+			*/
 			
 			// Loop through all program descriptions..
 			
@@ -226,6 +238,14 @@
 			
 		}
 
+		/*
+		 * 
+		 * Private function getVakIdByName
+		 * 
+		 * Returns the ID of a vak by the name, or returns false if it can't find any.
+		 * 
+		 */
+
 		private function getVakIdByName( $vakname )
 		{
 			
@@ -243,6 +263,14 @@
 			}
 			
 		}
+		
+		/*
+		 * 
+		 * Private function getFacultyId( $facultyName )
+		 * 
+		 * Returns the name of the faculty which's ID is given
+		 * 
+		 */
 
 		private function getFacultyId( $facultyName )
 		{
@@ -267,6 +295,14 @@
 			
 		}
 		
+		/*
+		 * 
+		 * Private function insertFaculty( $facultyName )
+		 * 
+		 * Inputs a new faculty in the DB with a given name.
+		 * 
+		 */
+		
 		private function insertFaculty( $facultyName )
 		{
 			
@@ -276,6 +312,14 @@
 			return $this->db->insert_id();
 			
 		}
+		
+		/*
+		 * 
+		 * Public function emptyDb();
+		 * 
+		 * Empty's the complete database.
+		 * 
+		 */
 		
 		public function emptyDb()
 		{
