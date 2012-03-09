@@ -1,43 +1,86 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-	 
 class Zoeken extends CI_Controller {
 
 	public function __Construct()
 	{
+
 	    parent::__Construct();  
-	    $this->load->model('Allestudies_model');
-	    //$this->load->model('Faculteiten_model');
+	   
 	}
 	
 	public function allestudies()
 	{
-	    $data = $this->Allestudies_model->getall();    
+	
+	    $this->load->model('Allestudies_model');
+	    $data   = $this->Allestudies_model->getall();    
 	    	
-		//$data	=	array("english", "informatiekunde");	
-		
 		$this->load->view( "header", array( "page" => "Alle Studies - Studies Zoeken", "pagetitle" => "Alle Studies" ) );
 		$this->load->view( "allestudies", array("programName" => $data));
 		$this->load->view( "footer" );
 		
 	}
 	
+	private function facultyShortcodeToFacultyName( $shortcode )
+	{
+	
+	    $omzetten  = array(
+	                       "nwi" => "Faculteit der Natuurwetenschappen, Wiskunde en Informatica",
+	                       "eb"  => "Faculteit der Economie en Bedrijfskunde",
+	                       "gw"  => "Faculteit der Geesteswetenschappen",
+	                       "mgw" => "Faculteit der Maatschappij- en Gedragswetenschappen",
+	                       "rg"  => "Faculteit der Rechtsgeleerdheid",
+	                       "amc" => "Faculteit der Geneeskunde",
+	                       "thk" => "Faculteit der Tandheelkunde",
+	                       "AUC" => "Amsterdam University College"
+	                   );
+	                   
+	   return $omzetten[$shortcode];
+	
+	}
+	
     public function faculteit()
 	{
 	
-		$data =	$this->Faculteiten_model->get_faculteiten();	
-		
-		$this->load->view( "header", array( "page" => "Alle Studies - per Faculteit ", "pagetitle" => "Studies op Faculteit" ) );
-		$this->load->view( "faculteiten", array("faculty_name" => $data));
-		$this->load->view( "footer" );
-		
-	}
+	    $this->load->model('Faculteiten_model');
 	
-public function toelatingseisen()
+	    $facultyId  = $this->uri->segment( 3 );
+	
+	    if( $facultyId !== false )     // trigger when there is GET data
+	    {
+
+	        $data   = $this->Faculteiten_model->get_resultaten( $facultyId );
+	        
+	        $this->load->view( "header", array( "page" => "Alle Studies - per Faculteit ", "pagetitle" => "Studies op Faculteit" ) );
+		    $this->load->view( "resultaten", array("programName" => $data));
+		    $this->load->view( "footer" );
+	        
+	    }
+	    else
+	    {
+	   
+		    $data   = $this->Faculteiten_model->get_faculteiten();	
+		
+		    foreach( $data as $id => $value )
+	        {
+	        
+	            $data[$id]["fullFaculty"]    = $this->facultyShortcodeToFacultyName( $value["faculty_name"] );
+	        
+	        }
+		
+		    $this->load->view( "header", array( "page" => "Alle Faculteiten ", "pagetitle" => "Studies op Faculteit" ) );
+		    $this->load->view( "faculteiten", array("faculty_name" => $data));
+		    $this->load->view( "footer" );
+		  
+	    }
+		
+	} 
+	
+    public function toelatingseisen()
 	{
 	
-		$data	=	array();	//	TODO!
+		$data   = array();	//	TODO!
 		
 		$this->load->view( "header", array( "page" => "Alle Studies - op Toelatingseisen", "pagetitle" => "Studies op Toelatingseisen" ) );
 		$this->load->view( "toelatingseisen", $data);
@@ -48,7 +91,7 @@ public function toelatingseisen()
 	public function keyword()
 	{
 	
-		$data	=	array();	//	TODO!
+		$data   = array();	//	TODO!
 		
 		$this->load->view( "header", array( "page" => "Studies Zoeken", "pagetitle" => "Studies Zoeken" ) );
 		$this->load->view( "zoeken", $data);
@@ -56,10 +99,10 @@ public function toelatingseisen()
 		
 	}
 
-public function favorieten()
+    public function favorieten()
 	{
 	
-		$data	=	array();	//	TODO!
+		$data	= array();	//	TODO!
 		
 		$this->load->view( "header", array( "page" => "Favorieten", "pagetitle" => "Favoriete Studies" ) );
 		$this->load->view( "favorieten", $data);
@@ -67,15 +110,16 @@ public function favorieten()
 		
 	}
 	
-public function laatstbekeken()
+    public function laatstbekeken()
 	{
 	
-		$data	=	array();	//	TODO!
+		$data	= array();	//	TODO!
 		
 		$this->load->view( "header", array( "page" => "Laatst bekeken Studies", "pagetitle" => "Laatst Bekeken" ) );
 		$this->load->view( "laatstbekeken", $data);
 		$this->load->view( "footer" );
 		
 	}
+ 
 }
 

@@ -4,8 +4,10 @@
 		
 		function __construct()
 	    {
+	        
 	        // Call the Model constructor
 	        parent::__construct();
+	        
 	    }
 		
 		/*
@@ -22,7 +24,7 @@
 			
 			$result 	= $this->db->query( "SELECT * FROM project1 WHERE id = '" . $studieId . "'" );
 			
-			$resultData	=	$result->result_array();
+			$resultData	= $result->result_array();
 			
 			if( count($resultData) == 0 )	// TODO I don't know if this function works this way but let's try
 			{
@@ -50,9 +52,9 @@
 		function getFacultyNameById( $facultyId )
 		{
 			
-			$get	=	$this->db->query( "SELECT * FROM faculteiten WHERE id = '" . $facultyId . "'" );
+			$get	= $this->db->query( "SELECT * FROM faculteiten WHERE id = '" . $facultyId . "'" );
 			
-			$result	=	$get->result_array();
+			$result	= $get->result_array();
 			
 			if( count( $result ) == 0 )
 			{
