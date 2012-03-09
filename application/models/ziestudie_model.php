@@ -39,6 +39,36 @@
 			
 		}
 		
+		/*
+		 * 
+		 * Function getFacultyNameById( $facultyId )
+		 * 
+		 * Returns the name of a faculty which ID is given.
+		 * 
+		 */
+		
+		function getFacultyNameById( $facultyId )
+		{
+			
+			$get	=	$this->db->query( "SELECT * FROM faculteiten WHERE id = '" . $facultyId . "'" );
+			
+			$result	=	$get->result_array();
+			
+			if( count( $result ) == 0 )
+			{
+				
+				return false;
+				
+			}
+			else
+			{
+				
+				return $result;
+				
+			}
+			
+		}
+		
 	}
 
 ?>

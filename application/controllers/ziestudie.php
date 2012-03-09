@@ -34,6 +34,26 @@ class Ziestudie extends CI_Controller {
 			{
 					
 				$data[0]["instructionLanguageFull"]		=	$this->shortToFull( $data[0]["instructionLanguage"] );
+				$data[0]["profielen"]					=	array( "EM", "NT" );
+				
+				// Get the facultyname
+				
+				$getfacultyname	=	$this->fubar->getFacultyNameById( $data[0]["facultyId"] );
+				
+				if( $getfacultyname !== false )
+				{
+					
+					$data[0]["facultyName"]	=	$getfacultyname[0]["faculty_name"];
+					
+				}
+				else
+				{
+					
+					$data[0]["facultyName"]	=	"onbekend";
+					
+				}
+				
+				// Display this shit!
 				
 				$this->load->view('header', array("page" => $data[0]["programName"] . " - Studie Bekijken", "pagetitle"=> $data[0]["programName"]));
 				$this->load->view('ziestudie', $data[0]);

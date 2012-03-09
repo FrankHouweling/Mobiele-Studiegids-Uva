@@ -60,14 +60,13 @@
 			Eersvolgende instroommogelijkheid: <u><?php echo $startingYear ?></u>.
 		</li>
 		<li>
-			Dit vak wordt vooral in het <u><?php echo $instructionLanguageFull?></u>.
+			Deze studie wordt vooral in het <u><?php echo $instructionLanguageFull?></u> gegeven.
 		</li>
 		<li>
-			Eersvolgende instroommogelijkheid: <?php echo $startingYear ?>.
-
+			Deze studie wordt gegeven aan de volgende faculteit: <u><?php echo $facultyName?></u>.
 		</li>
 		<li>
-			De taal van het vak is: <?php echo $instructionLanguageFull?>.
+			Bij deze studie kun je instromen met de volgende profielen: <u><?php echo implode( $profielen, "</u>, <u>" )?></u>.
 		</li>
 	</ul>
 	
