@@ -69,6 +69,36 @@
 			
 		}
 		
+		/*
+		 * 
+		 * Function getNeededVakkenByStydieId
+		 * 
+		 * Return false if there are no needed vakken for a studie, or returns an array with the needed vakken if it does.
+		 * 
+		 */
+		
+		function getNeededVakkenByStudieId( $studieId )
+		{
+			
+			$get	=	$this->db->query( "SELECT * FROM needed_vakken WHERE studie_id = '" . $studieId . "'" );
+			
+			$result	=	$get->result_array();
+			
+			if( count( $result ) == 0 )
+			{
+				
+				return false;
+				
+			}
+			else
+			{
+				
+				//	TODO
+				
+			}
+			
+		}
+		
 	}
 
 ?>
