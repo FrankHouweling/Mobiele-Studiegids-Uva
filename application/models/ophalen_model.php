@@ -68,6 +68,15 @@
 				$data["studyCluster"]		=	(string)$studieobject->programClassification->studyCluster;		//	Bijv. health care
 				
 			}
+			
+			// Check for the admissionable VWO-profiles
+			
+			foreach( $studieobject->programClassification->admissableProgram as $program )
+			{
+				
+				$this->addProfile(   $program->profile );
+				
+			}
 						
 			// Get the main instruction language
 			
