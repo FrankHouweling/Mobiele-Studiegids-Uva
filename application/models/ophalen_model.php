@@ -13,6 +13,8 @@
 			// Create empty data array	
 			$data	=	array();
 			
+			$toegestaneExtraVakken	=	array( "wiskunde-A", "wiskunde-B", "natuurkunde", "scheikunde", "biologie", "hbo-propedeuse", "universitaire-bachelor");
+			
 			// Put data in array
 			
 			switch( $studieobject->programClassification->degree )
@@ -69,14 +71,6 @@
 				
 			}
 			
-			// Check for the admissionable VWO-profiles
-			
-			foreach( $studieobject->programClassification->admissableProgram as $program )
-			{
-				
-				$this->addProfile(   $program->profile );
-				
-			}
 						
 			// Get the main instruction language
 			
@@ -148,8 +142,105 @@
 			
 			$data["facultyId"]		=	$this->getFacultyId( (string)$studieobject->programFree->facultyId );
 				
+			// Insert all the data to the Database.
+				
 	        $this->db->insert('project1', $data);
 			
+			$studieid		=	$this->db->insert_id();
+			
+			// Check for the admissionable VWO-profiles
+			
+			$curExtraVakken	=	array();
+			
+			foreach( $studieobject->programClassification->admissableProgram as $program )
+			{
+				
+				// Removing + EN and OF and replace them by a whitespace character
+				$tmpvakken	=	str_replace( "+", " ", str_replace( "en", " ",  str_replace( "of", " ", $program->additionalSubject[0] )));
+				
+				// Remove those () thingies
+				
+				foreach( array("(",")",".",",") as $specialchars )
+				{
+					
+					$tmpvakken	=	str_replace( $specialchars, "", $tmpvakken );
+					
+				}
+				
+				// BUG FIX for Wiskunde A, Wiskunde B and Wiskunde C (remove spaces in names)
+				
+				foreach( array( "wiskunde A", "wiskunde B", "wiskunde C", "universitaire bachelor" ) as $vak )
+				{
+					
+					$tmpvakken	=	str_replace( $vak, str_replace(" ", "-", $vak), $tmpvakken );
+					
+				}
+				
+				// Remove double whitespace
+				
+				while( strpos( $tmpvakken , '  ' ) !== false)
+				{
+					$tmpvakken = str_replace( '  ' , ' ' , $tmpvakken );
+				}
+				
+				// Now add all the vakken in an array
+				
+				foreach( explode( " ", trim( $tmpvakken ) ) as $vak )
+				{
+					
+					if( !in_array( $vak , $curExtraVakken ) AND in_array( $vak, $toegestaneExtraVakken ) )	//	Making sure no empty fields come in the DB
+					{
+							
+						$curExtraVakken[]	=	$vak;
+						
+					}
+					
+				}
+				
+			}
+			
+			
+			// Now loop through all the needed classes (add them to the DB if needed) and link them
+			
+			foreach( $curExtraVakken as $extravak )
+			{
+			
+			
+				$vakid	=	$this->getVakIdByName( $extravak );
+
+			
+				if( $vakid == false )
+				{
+					
+					$this->db->insert( "vakken", array( "vak_name" => $extravak ) );
+					
+					$vakid	=	$this->db->insert_id();
+					
+				}
+				
+				// Insert the link in the table..
+				
+				$this->db->insert( "needed_vakken", array( "vak_id" => $vakid, "studie_id" => $studieid ) );
+				
+			}
+			
+		}
+
+		private function getVakIdByName( $vakname )
+		{
+			
+			$get	=	$this->db->query( "SELECT vak_id FROM vakken WHERE vak_name = '" . $vakname . "'" );
+			
+			$result	=	$get->result_array();
+			if( count( $result ) == 0 )
+			{
+				return false;
+			}
+			else
+			{
+				
+				return $result[0]["vak_id"];
+			}
 			
 		}
 
@@ -157,7 +248,7 @@
 		{
 			
 			// First check if it already exists..
-			$result = $this->db->query( "SELECT * FROM faculteiten WHERE faculty_name = '" . $facultyName . "'" );
+			$result = $this->db->query( "SELECT * FROM faculteiten WHERE faculty_name = '" . mysql_real_escape_string($facultyName) . "'" );
 			
 			if( count($result->result_array()) == 0 )	// TODO I don't know if this function works this way but let's try
 			{
@@ -191,8 +282,8 @@
 			
 			$this->db->empty_table('faculteiten');
 			$this->db->empty_table('project1');
-			$this->db->empty_table('profielen');
-			$this->db->empty_table('profieleisen');
+			$this->db->empty_table('vakken');
+			$this->db->empty_table('needed_vakken');
 			
 		}
 		
