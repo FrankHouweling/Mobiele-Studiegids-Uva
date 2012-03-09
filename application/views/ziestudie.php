@@ -58,10 +58,15 @@
 		</li>
 		<li>
 			Eerstvolgende instroommogelijkheid: <?php echo $startingYear ?>.
-
 		</li>
 		<li>
-			De taal van het vak is: <?php echo $instructionLanguageFull?>.
+			Deze studie wordt vooral in het <u><?php echo $instructionLanguageFull?></u> gegeven.
+		</li>
+		<li>
+			Deze studie wordt gegeven aan de volgende faculteit: <u><?php echo $facultyName?></u>.
+		</li>
+		<li>
+			Bij deze studie kun je instromen met de volgende profielen: <u><?php echo implode( $profielen, "</u>, <u>" )?></u>.
 		</li>
 	</ul>
 	
