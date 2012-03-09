@@ -57,13 +57,7 @@
 			Programmatype: <u><?php echo $programType?></u>.
 		</li>
 		<li>
-			Eersvolgende instroommogelijkheid: <u><?php echo $startingYear ?></u>.
-		</li>
-		<li>
-			Dit vak wordt vooral in het <u><?php echo $instructionLanguageFull?></u>.
-		</li>
-		<li>
-			Eersvolgende instroommogelijkheid: <?php echo $startingYear ?>.
+			Eerstvolgende instroommogelijkheid: <?php echo $startingYear ?>.
 
 		</li>
 		<li>
