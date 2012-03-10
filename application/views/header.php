@@ -39,10 +39,29 @@
 					}
 					else
 					{
+						
+						if( isset( $backUrl ) )
+						{
+							
+							?>
+							<div class="backbutton">
+								<a href="../../../../<?php echo $backUrl?>">Vorige</a>
+							</div>
+							<?php
+							
+						}
+						else
+						{
+							
+							?>
+							<div class="backbutton">
+								<a href="../../../../index.php">Home</a>
+							</div>
+							<?php
+							
+						}
+						
 						?>
-								<div class="backbutton">
-									<a href="../../../../index.php">Vorige</a>
-								</div>
 							<h1>
 								<?php 
 									if( strlen($pagetitle) > 20 )
