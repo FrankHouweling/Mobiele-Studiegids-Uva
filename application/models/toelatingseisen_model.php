@@ -4,13 +4,23 @@
 		
 		function __construct()
 	    {
+	       
 	        // Call the Model constructor
 	        parent::__construct();
+	    
 	    }
 	    
 	    
 	    
-	    
+	public function get_toelatingseisen()
+        {
+        
+             $result = $this->db->query("SELECT vak_id, vak_name FROM vakken");
+             
+            
+          	 return $result->result_array();
+        
+        } 
 	    
 	    
 }	    

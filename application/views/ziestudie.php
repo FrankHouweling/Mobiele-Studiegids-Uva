@@ -69,8 +69,8 @@
 		<?php
 			if( $neededVakken !== false ){
 		?>
-			Bij deze studie kun je instromen zolang je VWO-profiel o.a. uit deze vakken bestond: <u><?php echo implode( $neededVakken, "</u>, <u>" )?></u>.<br />
-			<small>(Bij Wiskunde hoeft er indien er meerdere vermeld zijn natuurlijk maar aan 1 vorm voldaan te zijn.)</small>
+			Bij deze studie kun je instromen zolang je VWO-profiel o.a. uit deze vakken bestaat: <u><?php echo implode( $neededVakken, "</u>, <u>" )?></u>.<br />
+			<small>(Bij Wiskunde hoeft er indien er meerdere vermeld zijn natuurlijk maar aan 1 van beiden voldaan te zijn.)</small>
 		<?php
 			}
 			else

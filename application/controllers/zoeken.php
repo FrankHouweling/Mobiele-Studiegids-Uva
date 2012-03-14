@@ -80,11 +80,25 @@ class Zoeken extends CI_Controller {
     public function toelatingseisen()
 	{
 	
-		$data   = array();	//	TODO!
+	    if( $this->input->get("checkbox-3") ) //  TODO if there is POST-data given get the results
+	    {
+	    
+	        var_dump( $this->input->get( NULL ) );
+	    
+	    
+	    }
+	    else
+	    {
+	    
+	        $this->load->model('Toelatingseisen_model');
+	    
+	        $data   = $this->Toelatingseisen_model->get_toelatingseisen(); 
 		
-		$this->load->view( "header", array( "page" => "Alle Studies - op Toelatingseisen", "pagetitle" => "Studies op Toelatingseisen" ) );
-		$this->load->view( "toelatingseisen", $data);
-		$this->load->view( "footer" );
+		    $this->load->view( "header", array( "page" => "Alle Studies - op Toelatingseisen", "pagetitle" => "Studies op Toelatingseisen" ) );
+		    $this->load->view( "toelatingseisen", array("vak_name" => $data));
+		    $this->load->view( "footer" );
+	    
+	    }
 		
 	}
 	
