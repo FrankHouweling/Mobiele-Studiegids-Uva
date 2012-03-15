@@ -15,7 +15,7 @@
         *
         */
         
-		public function getall()
+		public function getAllStudies()
 		{
 		   
 		    $query = $this->db->get_where('project1');
