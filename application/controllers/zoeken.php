@@ -14,7 +14,7 @@ class Zoeken extends CI_Controller {
 	{
 	
 	    $this->load->model('Allestudies_model');
-	    $data   = $this->Allestudies_model->getAllStudies();    
+	    $data   = $this->Allestudies_model->getall();    
 	    	
 		$this->load->view( "header", array( "page" => "Alle Studies - Studies Zoeken", "pagetitle" => "Alle Studies" ) );
 		$this->load->view( "allestudies", array("programName" => $data));
