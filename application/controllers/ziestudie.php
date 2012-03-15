@@ -74,6 +74,40 @@ class Ziestudie extends CI_Controller {
 		}
 		
 	}
+
+	/*
+	 * 
+	 * Private function addToLastSeen( $studieId )
+	 * 
+	 * Adds the studie to last seen session. No return value.
+	 * 
+	 */
+	
+	private function addToLastSeen( $studieId )
+	{
+				
+		if( isset( $_SESSION['lastSeen'] ) )
+		{
+			
+			if( !in_array( $studieId, $_SESSION['lastSeen'] ) )
+			{
+				
+				$_SESSION['lastSeen'][]	=	$studieId;
+				
+			}
+			
+			
+		}
+		else
+		{
+			
+			$_SESSION['lastSeen']	=	array();
+			
+			$_SESSION['lastSeen'][]	=	$studieId;
+			
+		}
+		
+	}
 	
 	/*
 	 * 
@@ -124,6 +158,8 @@ class Ziestudie extends CI_Controller {
 	{
 		
 		$data	=	$this->fubar->getStudie( $studieID );
+		
+		$this->addToLastSeen( $studieID );
 		
 		if( $data !== false )
 		{

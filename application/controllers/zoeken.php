@@ -126,11 +126,13 @@ class Zoeken extends CI_Controller {
 	
     public function laatstbekeken()
 	{
+		
+		$this->load->model('Laatstbekeken_model', 'fubar');
 	
-		$data	= array();	//	TODO!
+		$data	=	$this->fubar->getDataByIDs( $_SESSION['lastSeen'] );
 		
 		$this->load->view( "header", array( "page" => "Laatst bekeken Studies", "pagetitle" => "Laatst Bekeken" ) );
-		$this->load->view( "laatstbekeken", $data);
+		$this->load->view( "resultaten", array("programName"=>$data));
 		$this->load->view( "footer" );
 		
 	}
