@@ -128,6 +128,13 @@ class Zoeken extends CI_Controller {
 	{
 		
 		$this->load->model('Laatstbekeken_model', 'fubar');
+		
+		while( count( $_SESSION['lastSeen'] > 15 ) )
+		{
+			
+			array_pop( $_SESSION['lastSeen'] );
+			
+		}
 	
 		$data	=	$this->fubar->getDataByIDs( $_SESSION['lastSeen'] );
 		
