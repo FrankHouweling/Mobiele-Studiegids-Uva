@@ -53,7 +53,7 @@
 	   /*
         *   Private function studieNaamToVakId 
         *
-        *   
+        *    
         */
 		
 		private function studieNaamToVakId( $studieNaam )
