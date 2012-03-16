@@ -141,7 +141,7 @@ class Zoeken extends CI_Controller {
 		$data	=	$this->fubar->getDataByIDs( $_SESSION['lastSeen'] );
 		
 		$this->load->view( "header", array( "page" => "Laatst bekeken Studies", "pagetitle" => "Laatst Bekeken" ) );
-		$this->load->view( "resultaten", array("programName"=>$data));
+		$this->load->view( "allestudies", array("programName"=>$data));
 		$this->load->view( "footer" );
 		
 	}
