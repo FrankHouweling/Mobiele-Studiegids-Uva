@@ -23,19 +23,31 @@
 		    
 		}
 		
-		public function getFiltered()
+		public function getFiltered( $get )
 	    {
 	    
-			$query	=	"SELECT * FROM project1 WHERE";
+			$query	=	"SELECT * FROM project1, needed_vakken, vakken WHERE";
 		
 			//	Query opbouwen
 			
-			$query	.=	"";	//	Iets eraan toevoegen
+			foreach( $this->getAllVakIds() as $vakid )
+			{
+				
+				if( isset( $get['checkbox-' . $vakid] ) )
+				{
+					
+					$query	.= " needed_vakken.studie_id = project1.id AND vak_id = " . $vakid . "  ";
+					
+				}
+				
+			}
+			
+			echo $query;
 			
 			// Query uitvoeren
 		
 	        $query = $this->db->query( $query );
-	        return $query->result_array();
+	        print_r($query->result_array());
 	        
 	    }
 }

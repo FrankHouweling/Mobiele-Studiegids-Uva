@@ -86,7 +86,7 @@ class Zoeken extends CI_Controller {
 	    
 	        $this->load->model('Studies_model');
 	        
-	        $data = $this->Studies_model->getFiltered();
+	        $data = $this->Studies_model->getFiltered( $this->input->get( NULL ) );
 	    
 	        $this->load->view( "header", array( "page" => "Alle Studies - op Toelatingseisen", "pagetitle" => "Studies op Toelatingseisen" ) );
 		    $this->load->view( "allestudies", array("programName" => $data));
