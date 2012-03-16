@@ -13,16 +13,18 @@ class Favorieten extends CI_Controller {
 	
 	/*
 	 * 
-	 * Public function add( $studieId )
+	 * Public function add() )
 	 * 
 	 * Adds the studie which's ID is given to favourites
 	 * 
 	 */
 	
-	public function add( $studieId )
+	public function add( )
 	{
 		
-		if( $this->fubar->getStudieById( $studieId ) !== false )
+		$studieId	=	$this->uri->segment(3);
+		
+		if( $this->fubar->getDataByIds( $studieId ) !== false )
 		{
 			
 			if( !in_array( $studieId, $_SESSION['favorieten'] ) )
@@ -40,7 +42,7 @@ class Favorieten extends CI_Controller {
 	
 	/*
 	 * 
-	 * Pulic function remove( $studieId )
+	 * Pulic function remove()
 	 * 
 	 * Removes a studie from the favourites list by the given ID
 	 * 
@@ -48,6 +50,8 @@ class Favorieten extends CI_Controller {
 	
 	public function remove( $studieId )
 	{
+		
+		$studieId	=	$this->uri->segment(3);
 		
 		$_SESSION['favorieten']	=	remove_element( $_SESSION['favorieten'], $sutdieId );
 		
