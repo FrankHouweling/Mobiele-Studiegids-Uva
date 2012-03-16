@@ -52,7 +52,6 @@ class Favorieten extends CI_Controller {
 	{
 		
 		$studieId	=	$this->uri->segment(3);
-		
 		$_SESSION['favorieten']	=	$this->remove_element( $_SESSION['favorieten'], $studieId );
 		
 		header( "Location: ../../../index.php/zoeken/favorieten/" );
