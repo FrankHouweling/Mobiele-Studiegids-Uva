@@ -4,7 +4,7 @@
 			
                     <?php foreach($faculty_name as $faculteit): ?>
 
-                    <li><a href="faculteit/<?=$faculteit['id']?>/"><?=$faculteit['fullFaculty']?></a></li>
+                    <li><a href="http://project0/index.php/faculteit/<?=$faculteit['id']?>"><?=$faculteit['fullFaculty']?></a></li>
 
                     <?php endforeach; ?>
                     
