@@ -51,12 +51,12 @@
 		}
 		
 	   /*
-        *   Private function studieNaamToVakId 
+        *   Private function vakNaamToVakId 
         *
         *   
         */
 		
-		private function studieNaamToVakId( $studieNaam )
+		private function vakNaamToVakId( $studieNaam )
 		{
 		
 			$query	=	$this->db->query( "SELECT vak_id FROM vakken WHERE vak_name = '" . $studieNaam . "'" );
@@ -101,7 +101,7 @@
 			foreach( $kannietdoen as $kndn  )
 			{
 				
-				$tus[]	= "( needed_vakken.studie_id = project1.id AND needed_vakken.vak_id != " . $this->studieNaamToVakId( "wiskunde-" . $kndn ) . "  )";
+				$tus[]	= "( needed_vakken.studie_id = project1.id AND needed_vakken.vak_id != " . $this->vakNaamToVakId( "wiskunde-" . $kndn ) . "  )";
 				
 			}
 			
@@ -121,16 +121,26 @@
 				
 			}
 			
+			
 			if( !count($tus) == 0 )
 			{
 				
-				$query	=	$query . " WHERE ( " . implode(" AND ", $tus) . " ) OR ";
+				$query	.=	" WHERE ( " . implode(" AND ", $tus) . " ) OR ";
 				
 			}
 			else
 			{
 				
-				$query	=	" WHERE ";
+				$query	.=	" WHERE ";
+				
+			}
+			
+			// Remove masters for non-bachelor
+			
+			if( !isset( $get['checkbox-' . $this->vakNaamToVakId( "universitaire-bachelor")] ) )
+			{
+				
+				$query	.=	" degree NOT LIKE 'MSc' AND ";
 				
 			}
 			

@@ -6,8 +6,8 @@
                      <?php foreach($programName as $studie): ?>
 
                     <li>
-                    	<a href="../../index.php/ziestudie/studie/<?=$studie['id']?>">
-                    		<?=$studie['programName']?> <span class="ui-li-count"><?php echo $studie['degree']?></span>
+                    	<a href="../../index.php/ziestudie/studie/<?php echo $studie['id']?>">
+                    		<?php echo $studie['programName']?> <span class="ui-li-count"><?php echo $studie['degree']?></span>
                     	</a>
                     	<a href="../../index.php/favorieten/add/<?php echo $studie['id']?>" data-rel="dialog" data-transition="slideup">+ Favoriet</a>
                     </li>
