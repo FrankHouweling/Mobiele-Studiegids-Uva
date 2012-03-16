@@ -9,7 +9,7 @@ class Fullsearch_model extends CI_Model {
         parent::__construct();
     }
     
-	private function search( $q )
+	function search( $q )
 	{
 		
 		$get	=	$this->db->query( "SELECT * FROM project1 WHERE programDescription LIKE '%" . $q . "%' OR programName LIKE '%" . $q . "%'" );

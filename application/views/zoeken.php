@@ -3,12 +3,10 @@
     <div class="mcontent">
     
     <p>
-          <h3>Hier kunt u studies zoeken: [test]</h3>
+          <h3>Hier kunt u studies zoeken:</h3>
     </p>
-    
-        <div class="datalist">
-		    <ul>
-		    <input type="search" name="search" id="searc-basic" value="" />
-		    </ul>
-		</div>
+    	<form method="get" action="./">
+			<input type="search" name="q" id="searc-basic" value="" />
+			<input type="submit" value="Zoeken" />
+		</form>
 	</div>

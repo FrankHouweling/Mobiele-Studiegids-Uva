@@ -146,20 +146,22 @@ class Zoeken extends CI_Controller {
 	
 		$this->load->model("Fullsearch_model");
 	
-		if( !isset( $this->input->get("q") ) )
+		if( $this->input->get("q") )
 		{
 			
 			$data	=	$this->Fullsearch_model->search( $this->input->get("q") );
-				
+			
 			$this->load->view( "header", array( "page" => "Studies Zoeken", "pagetitle" => "Studies Zoeken" ) );
-			$this->load->view( "zoeken", $data);
-			$this->load->view( "footer" );	
+			$this->load->view( "allestudies", array("programName" => $data));
+			$this->load->view( "footer" );
 			
 		}
 		else
 		{
 		
-			// HIER DE VIEW INLADEN!
+			$this->load->view( "header", array( "page" => "Studies Zoeken", "pagetitle" => "Studies Zoeken" ) );
+			$this->load->view( "zoeken" );
+			$this->load->view( "footer");
 			
 		}
 		
