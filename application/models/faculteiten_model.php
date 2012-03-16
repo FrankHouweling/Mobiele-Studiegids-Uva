@@ -10,9 +10,10 @@ class Faculteiten_model extends CI_Model {
     }
     
    
-    /**
-     * add faculteiten in faculteiten database
+    /*
+     * Private function add
      *
+     * add faculteiten in faculteiten table on database
      */
     
      private function add()
@@ -27,29 +28,33 @@ class Faculteiten_model extends CI_Model {
 		
      }
     
-    /**
-     * get faculteiten from faculteiten database
+    /*
+     * Public function getFaculteiten
      *
+     * get faculteiten from faculteiten table on database
      */
 
     public function getFaculteiten()
     {
         
          $query = $this->db->get_where('faculteiten');
+	     
 	     return $query->result_array();
    
     }
     
     
-    /**
-     * show results (studies) from all faculteiten with given id
+    /*
+     * Public function getResultaten 
      *
+     * show results (studies) from all faculteiten with given id
      */
      
     public function getResultaten( $facultyID )
     {
          
          $result = $this->db->query("SELECT programName, id FROM project1 WHERE facultyId = '" . $facultyID . "'");
+	     
 	     return $result->result_array();
     
     } 

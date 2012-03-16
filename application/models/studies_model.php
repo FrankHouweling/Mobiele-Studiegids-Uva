@@ -53,7 +53,7 @@
 	   /*
         *   Private function vakNaamToVakId 
         *
-        *    
+        *   get the vaknaam combine it with the vakid and get the name of the study    
         */
 		
 		private function vakNaamToVakId( $studieNaam )
@@ -67,6 +67,12 @@
 			
 		}
 		
+		/*
+        *   Public function getFiltered 
+        *
+        *   building querys for filter options
+        */
+		
 		public function getFiltered( $get )
 	    {
 	    
@@ -77,7 +83,7 @@
 			
 			$tus	=	array();
 			
-			// Wiskunde probleem..
+			// Wiskunde probleem
 			
 			switch( $get['wiskunde'] )
 			{

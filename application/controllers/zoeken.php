@@ -118,7 +118,7 @@ class Zoeken extends CI_Controller {
 	 
 	        
 	    
-	    
+	  
 	    }
 	    else
 	    {
