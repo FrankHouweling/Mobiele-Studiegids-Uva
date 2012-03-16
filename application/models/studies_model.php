@@ -124,12 +124,20 @@
 			if( !count($tus) == 0 )
 			{
 				
-				$query	=	$query . " WHERE " . implode(" AND ", $tus);
+				$query	=	$query . " WHERE " . implode(" AND ", $tus) . "OR";
+				
+			}
+			else
+			{
+				
+				$query	=	" WHERE ";
 				
 			}
 			
-			echo $query;
-	
+			$query	=	" ( SELECT COUNT(*) FROM needed_vakken WHERE studie_id = project1.id ) = 0
+						GROUP BY
+						project1.id";
+		
 	
 			// Query uitvoeren
 			
