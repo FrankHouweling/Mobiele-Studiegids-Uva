@@ -144,8 +144,12 @@ class Zoeken extends CI_Controller {
 	public function keyword()
 	{
 	
+		$this->load->model("Fullsearch_model");
+	
 		if( !isset( $this->input->get("q") ) )
 		{
+			
+			$data	=	$this->Fullsearch_model->search( $this->input->get("q") );
 				
 			$this->load->view( "header", array( "page" => "Studies Zoeken", "pagetitle" => "Studies Zoeken" ) );
 			$this->load->view( "zoeken", $data);
