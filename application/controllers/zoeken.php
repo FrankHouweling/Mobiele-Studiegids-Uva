@@ -145,6 +145,20 @@ class Zoeken extends CI_Controller {
 		$this->load->view( "footer" );
 		
 	}
+	
+	public function favorieten()
+	{
+		
+		$this->load->model('Favorieten_model','fubar');
+		
+		$data	=	$this->fubar->getDataByIDs( $_SESSION['favorieten'] );
+		
+		$this->load->view( "header", array( "page" => "Laatst bekeken Studies", "pagetitle" => "Laatst Bekeken" ) );
+		$this->load->view( "allestudies", array("programName"=>$data));
+		$this->load->view( "footer" );
+		
+		
+	}
  
 }
 
