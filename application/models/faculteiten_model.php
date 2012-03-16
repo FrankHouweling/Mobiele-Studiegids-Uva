@@ -49,7 +49,7 @@ class Faculteiten_model extends CI_Model {
     public function getResultaten( $facultyID )
     {
          
-         $result = $this->db->query("SELECT programName, id FROM project1 WHERE facultyId = '" . $facultyID . "'");
+         $result = $this->db->query("SELECT * FROM project1 WHERE facultyId = '" . $facultyID . "'");
 	     return $result->result_array();
     
     } 

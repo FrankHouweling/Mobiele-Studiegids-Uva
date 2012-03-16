@@ -72,7 +72,7 @@ class Zoeken extends CI_Controller {
 	        $data = $this->Faculteiten_model->getResultaten( $facultyId );
 	        
 	        $this->load->view( "header", array( "page" => "Alle Studies - per Faculteit ", "pagetitle" => "Studies op Faculteit" ) );
-		    $this->load->view( "resultaten", array("programName" => $data));
+		    $this->load->view( "allestudies", array("programName" => $data));
 		    $this->load->view( "footer" );
 	        
 	    }
