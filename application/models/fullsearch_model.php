@@ -9,6 +9,12 @@ class Fullsearch_model extends CI_Model {
         parent::__construct();
     }
     
+   /*
+    * Function search
+    *
+    * building query to full text search on program description in table on database 
+    */
+	
 	function search( $q )
 	{
 		
