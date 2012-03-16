@@ -26,7 +26,15 @@
 		public function getFiltered()
 	    {
 	    
-	        $query = $this->db->get_where('project1');
+			$query	=	"SELECT * FROM project1 WHERE";
+		
+			//	Query opbouwen
+			
+			$query	.=	"";	//	Iets eraan toevoegen
+			
+			// Query uitvoeren
+		
+	        $query = $this->db->query( $query );
 	        return $query->result_array();
 	        
 	    }
