@@ -124,7 +124,7 @@
 			if( !count($tus) == 0 )
 			{
 				
-				$query	=	$query . " WHERE " . implode(" AND ", $tus) . "OR";
+				$query	=	$query . " WHERE ( " . implode(" AND ", $tus) . " ) OR ";
 				
 			}
 			else
