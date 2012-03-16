@@ -66,13 +66,10 @@
 			}
 			
 			$query	=	$query . implode(" AND ", $tus);
-			
-			echo $query;
-			
 			// Query uitvoeren
 		
 	        $query = $this->db->query( $query );
-	        print_r($query->result_array());
+	        return $query->result_array();
 	        
 	    }
 }
