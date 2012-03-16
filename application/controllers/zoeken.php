@@ -112,17 +112,6 @@ class Zoeken extends CI_Controller {
 		$this->load->view( "footer" );
 		
 	}
-
-    public function favorieten()
-	{
-	
-		$data	= array();	//	TODO!
-		
-		$this->load->view( "header", array( "page" => "Favorieten", "pagetitle" => "Favoriete Studies" ) );
-		$this->load->view( "favorieten", $data);
-		$this->load->view( "footer" );
-		
-	}
 	
     public function laatstbekeken()
 	{
