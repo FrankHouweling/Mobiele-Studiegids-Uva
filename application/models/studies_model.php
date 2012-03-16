@@ -45,7 +45,7 @@
 	    {
 	    
 			
-			$query	=	"SELECT * FROM project1";
+			$query	=	"SELECT project1.* FROM project1, needed_vakken";
 		
 			//	Query opbouwen
 			
@@ -71,6 +71,8 @@
 				$query	=	$query . " WHERE " . implode(" AND ", $tus);
 				
 			}
+			
+			echo $query;
 	
 			// Query uitvoeren
 		
