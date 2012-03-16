@@ -49,19 +49,21 @@
 		
 			//	Query opbouwen
 			
+			$tus	=	array();
+			
 			foreach( $this->getAllVakIds() as $vakid )
 			{
 				
 				if( isset( $get['checkbox-' . $vakid] ) )
 				{
 					
-					$query	.= " needed_vakken.studie_id = project1.id AND vak_id = " . $vakid . "  ";
+					$tus[]	= "( needed_vakken.studie_id = project1.id AND vak_id = " . $vakid . "  )";
 					
 				}
 				
 			}
 			
-			echo $query;
+			$query	=	$query . implode(" AND ", $tus);
 			
 			// Query uitvoeren
 		
