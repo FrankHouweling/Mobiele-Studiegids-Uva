@@ -41,7 +41,26 @@
 					$degree	=	"CER";	//	Certificaat
 				break;
 				default:
-					$degree	=	"UNK";	//	unknown
+					
+					if( str_replace("bachelor","",(string)$studieobject->programClassification->programLevel) !== (string)$studieobject->programClassification->programLevel )
+					{
+						
+						$degree	=	"BSc";
+						
+					}
+					else if( str_replace("master","",(string)$studieobject->programClassification->programLevel) !== (string)$studieobject->programClassification->programLevel )
+					{
+						
+						$degree	=	"MSc";
+						
+					}
+					else
+					{
+						
+						$degree	=	"UNK";
+						
+					}
+					
 				break;
 			}
 			
