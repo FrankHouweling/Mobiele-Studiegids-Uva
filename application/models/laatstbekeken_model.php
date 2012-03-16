@@ -23,7 +23,7 @@
 		function getDataByIDs( $ids )
 		{
 			
-			$get	=	$this->db->query( "SELECT * FROM project1 WHERE id IN('" . implode("','", $ids) . "')" );
+			$get = $this->db->query( "SELECT * FROM project1 WHERE id IN('" . implode("','", $ids) . "')" );
 			
 			return $get->result_array();
 			

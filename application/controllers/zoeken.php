@@ -10,12 +10,18 @@ class Zoeken extends CI_Controller {
 	   
 	}
 	
+	/*
+	 * Public function allestudies
+	 *
+	 *
+	 */
+	
 	public function allestudies()
 	{
 	
 	    $this->load->model('Studies_model');
 	    
-	    $data = $this->Studies_model->getall();    
+	    $data = $this->Studies_model->getAll();    
 	    	
 		$this->load->view( "header", array( "page" => "Alle Studies - Studies Zoeken", "pagetitle" => "Alle Studies" ) );
 		$this->load->view( "allestudies", array("programName" => $data));
@@ -23,6 +29,12 @@ class Zoeken extends CI_Controller {
 		
 	}
 	
+	/*
+	 * Private function facultyShortcodeToFacultyName
+	 *
+	 *
+	 */
+	 
 	private function facultyShortcodeToFacultyName( $shortcode )
 	{
 	
@@ -41,6 +53,12 @@ class Zoeken extends CI_Controller {
 	
 	}
 	
+	/*
+	 * Public function faculteit
+	 *
+	 *
+	 */
+	
     public function faculteit()
 	{
 	
@@ -51,7 +69,7 @@ class Zoeken extends CI_Controller {
 	    if( $facultyId !== false )     // trigger when there is GET data
 	    {
 
-	        $data = $this->Faculteiten_model->get_resultaten( $facultyId );
+	        $data = $this->Faculteiten_model->getResultaten( $facultyId );
 	        
 	        $this->load->view( "header", array( "page" => "Alle Studies - per Faculteit ", "pagetitle" => "Studies op Faculteit" ) );
 		    $this->load->view( "resultaten", array("programName" => $data));
@@ -61,7 +79,7 @@ class Zoeken extends CI_Controller {
 	    else
 	    {
 	   
-		    $data = $this->Faculteiten_model->get_faculteiten();	
+		    $data = $this->Faculteiten_model->getFaculteiten();	
 		
 		    foreach( $data as $id => $value )
 	        {
@@ -77,6 +95,12 @@ class Zoeken extends CI_Controller {
 	    }
 		
 	} 
+	
+	/*
+	 * Public function toelatingseisen
+	 *
+	 *
+	 */
 	
     public function toelatingseisen()
 	{
@@ -101,7 +125,7 @@ class Zoeken extends CI_Controller {
 	    
 	        $this->load->model('Toelatingseisen_model');
 	    
-	        $data = $this->Toelatingseisen_model->get_toelatingseisen(); 
+	        $data = $this->Toelatingseisen_model->getToelatingseisen(); 
 		
 		    $this->load->view( "header", array( "page" => "Alle Studies - op Toelatingseisen", "pagetitle" => "Studies op Toelatingseisen" ) );
 		    $this->load->view( "toelatingseisen", array("vak_name" => $data));
@@ -110,6 +134,12 @@ class Zoeken extends CI_Controller {
 	    }
 		
 	}
+	
+	/*
+	 * Public function keyword
+	 *
+	 *
+	 */
 	
 	public function keyword()
 	{
@@ -121,6 +151,12 @@ class Zoeken extends CI_Controller {
 		$this->load->view( "footer" );
 		
 	}
+	
+	/*
+	 * Public function laatstbekeken
+	 *
+	 *
+	 */
 	
     public function laatstbekeken()
 	{
@@ -143,6 +179,12 @@ class Zoeken extends CI_Controller {
 		$this->load->view( "footer" );
 		
 	}
+	
+	/*
+	 * Public function favorieten
+	 *
+	 *
+	 */
 	
 	public function favorieten()
 	{

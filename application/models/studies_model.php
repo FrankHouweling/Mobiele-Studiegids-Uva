@@ -15,10 +15,11 @@
         *
         */
         
-		public function getall()
+		public function getAll()
 		{
 		   
 		    $query = $this->db->get_where('project1');
+	        
 	        return $query->result_array();
 		    
 		}
@@ -74,9 +75,10 @@
 			
 			echo $query;
 	
+	
 			// Query uitvoeren
-		
 	        $query = $this->db->query( $query );
+	        
 	        return $query->result_array();
 	        
 	    }

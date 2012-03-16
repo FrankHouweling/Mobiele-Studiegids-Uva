@@ -14,19 +14,18 @@
 		 * 
 		 * Function isStudie();
 		 * 
-		 * If the studie exists this function returns the data, otherwise it returns false.
+		 * If the studie exists: this function returns the data, otherwise it returns false.
 		 * 
 		 */
 		
 		function getStudie( $studieId )
 		{
 			
+			$result 	=   $this->db->query( "SELECT * FROM project1 WHERE id = '" . $studieId . "'" );
 			
-			$result 	= $this->db->query( "SELECT * FROM project1 WHERE id = '" . $studieId . "'" );
+			$resultData	=   $result->result_array();
 			
-			$resultData	= $result->result_array();
-			
-			if( count($resultData) == 0 )	// TODO I don't know if this function works this way but let's try
+			if( count($resultData) == 0 )	
 			{
 				
 				return false;
@@ -52,9 +51,9 @@
 		function getFacultyNameById( $facultyId )
 		{
 			
-			$get	= $this->db->query( "SELECT * FROM faculteiten WHERE id = '" . $facultyId . "'" );
+			$get	=   $this->db->query( "SELECT * FROM faculteiten WHERE id = '" . $facultyId . "'" );
 			
-			$result	= $get->result_array();
+			$result	=   $get->result_array();
 			
 			if( count( $result ) == 0 )
 			{
@@ -100,7 +99,7 @@
 				foreach( $result as $res )
 				{
 					
-					$returnAr[]	=	$this->getVakNaamByVakId( $res['vak_id'] );
+					$returnAr[]	= $this->getVakNaamByVakId( $res['vak_id'] );
 					
 				}
 				

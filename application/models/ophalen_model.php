@@ -18,46 +18,47 @@
 		
 		public function inputindb( $studieobject )
 		{
-			// Create empty data array	
-			$data	=	array();
 			
-			$toegestaneExtraVakken	=	array( "wiskunde-A", "wiskunde-B", "natuurkunde", "scheikunde", "biologie", "hbo-propedeuse", "universitaire-bachelor", "latijn", "grieks");
+			// Create empty data array	
+			$data =	array();
+			
+			$toegestaneExtraVakken = array( "wiskunde-A", "wiskunde-B", "natuurkunde", "scheikunde", "biologie", "hbo-propedeuse", "universitaire-bachelor", "latijn", "grieks");
+			
 			
 			// Put data in array
-			
 			switch( $studieobject->programClassification->degree )
 			{
 				
 				case "MA":
-					$degree	=	"MSc";	//	Master of Science
+					$degree	= "MSc";	//	Master of Science
 				break;
 				case "BSc":
-					$degree	=	"BSc";	// Bachelor of Science
+					$degree	= "BSc";	// Bachelor of Science
 				break;
 				case "BSa":
-					$degree	=	"BSa";	//	Bachelor of Arts, komt dat voor?
+					$degree	= "BSa";	//	Bachelor of Arts
 				break;
 				case "certificate":
-					$degree	=	"CER";	//	Certificaat
+					$degree	= "CER";	//	Certificaat
 				break;
 				default:
 					
 					if( str_replace("bachelor","",(string)$studieobject->programClassification->programLevel) !== (string)$studieobject->programClassification->programLevel )
 					{
 						
-						$degree	=	"BSc";
+						$degree	= "BSc";
 						
 					}
 					else if( str_replace("master","",(string)$studieobject->programClassification->programLevel) !== (string)$studieobject->programClassification->programLevel )
 					{
 						
-						$degree	=	"MSc";
+						$degree	= "MSc";
 						
 					}
 					else
 					{
 						
-						$degree	=	"UNK";
+						$degree	= "UNK";
 						
 					}
 					
@@ -88,20 +89,19 @@
 			{
 				
 				// Multiple? Just get the first one!
-				$data["studyCluster"]		=	(string)$studieobject->programClassification->studyCluster[0];		//	Bijv. health care
+				$data["studyCluster"]	=	(string)$studieobject->programClassification->studyCluster[0];		//	Bijv. health care
 				
 			}
 			else
 			{
 				
-				$data["studyCluster"]		=	(string)$studieobject->programClassification->studyCluster;		//	Bijv. health care
+				$data["studyCluster"]	=	(string)$studieobject->programClassification->studyCluster;		//	Bijv. health care
 				
 			}
 			
 						
 			// Get the main instruction language
-			
-			$highestpercentage	=	0;
+			$highestpercentage = 0;
 			
 			foreach( $studieobject->programCurriculum->instructionLanguage as $instructionLanguage )
 			{
@@ -109,46 +109,36 @@
 				if( $instructionLanguage->percentage > $highestpercentage )
 				{
 					
-					$highestpercentage					=	$instructionLanguage->percentage;
+					$highestpercentage				=	$instructionLanguage->percentage;
 					$data["instructionLanguage"]	=	(string)$instructionLanguage->languageCode;
 					
 				}	
 				
 			}
-				
-				
-			// Study advise has been canceled in this project
 						
-			/*
-			$data["studyAdvise"]		=	true;	//	TODO!
-			$data["studyAdviseType"]	=	(string)$studieobject->programClassification->studyAdviseType;	//	TODO!
-			$data["studyAdviseMinimum"]	=	(string)$studieobject->programClassification->studyAdviseMinimum;	//	TODO!
-			$data["studyAdvisePeriod"]	=	(string)$studieobject->programClassification->studyAdvisePeriod;	//	TODO! ik neem aan in maanden?
-			*/
 			
 			// Loop through all program descriptions..
-			
 			foreach( $studieobject->programDescriptions->programDescription as $description )
 			{
 				
-				$values	=	$description->attributes();
+				$values	= $description->attributes();
 				
 				// Look for the dutch program description..
 				if( $values["lang"] = "nl" )
 				{
 					
-					$data["programDescription"]	=	(string)$description;
+					$data["programDescription"]	= (string)$description;
 					
 				}
 				
 			}
 			
-			// If there are multiple names for multiple languages, look for the dutch one...
 			
+			// If there are multiple names for multiple languages, look for the dutch one...
 			if( is_array( $studieobject->programDescriptions->programName ) )
 			{
 			
-				$programName	=	"";
+				$programName = "";
 				
 				foreach( $studieobject->programDescriptions->programName as $tmpprog )
 				{
@@ -157,7 +147,7 @@
 					if( $tmpprog->attributes()->lang == "nl" )
 					{
 						
-						$programName	=	$tmpprog;
+						$programName = $tmpprog;
 						
 					}
 					
@@ -173,14 +163,14 @@
 			
 			$data["facultyId"]		=	$this->getFacultyId( (string)$studieobject->programFree->facultyId );
 				
+			
 			// Insert all the data to the Database.
-				
 	        $this->db->insert('project1', $data);
 			
 			$studieid		=	$this->db->insert_id();
 			
-			// Check for the admissionable VWO-profiles
 			
+			// Check for the admissionable VWO-profiles
 			$curExtraVakken	=	array();
 			
 			foreach( $studieobject->programClassification->admissableProgram as $program )
@@ -189,40 +179,39 @@
 				// Removing + EN and OF and replace them by a whitespace character
 				$tmpvakken	=	str_replace( "+", " ", str_replace( "en", " ",  str_replace( "of", " ", $program->additionalSubject[0] )));
 				
-				// Remove those () thingies
 				
+				// Remove those () thingies
 				foreach( array("(",")",".",",") as $specialchars )
 				{
 					
-					$tmpvakken	=	str_replace( $specialchars, "", $tmpvakken );
+					$tmpvakken = str_replace( $specialchars, "", $tmpvakken );
 					
 				}
 				
 				// BUG FIX for Wiskunde A, Wiskunde B and Wiskunde C (remove spaces in names)
-				
 				foreach( array( "wiskunde A", "wiskunde B", "wiskunde C", "universitaire bachelor" ) as $vak )
 				{
 					
-					$tmpvakken	=	str_replace( $vak, str_replace(" ", "-", $vak), $tmpvakken );
+					$tmpvakken = str_replace( $vak, str_replace(" ", "-", $vak), $tmpvakken );
 					
 				}
 				
-				// Remove double whitespace
 				
+				// Remove double whitespace
 				while( strpos( $tmpvakken , '  ' ) !== false)
 				{
 					$tmpvakken = str_replace( '  ' , ' ' , $tmpvakken );
 				}
 				
-				// Now add all the vakken in an array
 				
+				// Now add all the vakken in an array
 				foreach( explode( " ", trim( $tmpvakken ) ) as $vak )
 				{
 					
 					if( !in_array( $vak , $curExtraVakken ) AND in_array( $vak, $toegestaneExtraVakken ) )	//	Making sure no empty fields come in the DB
 					{
 							
-						$curExtraVakken[]	=	$vak;
+						$curExtraVakken[] =	$vak;
 						
 					}
 					
@@ -232,10 +221,8 @@
 			
 			
 			// Now loop through all the needed classes (add them to the DB if needed) and link them
-			
 			foreach( $curExtraVakken as $extravak )
 			{
-			
 			
 				$vakid	=	$this->getVakIdByName( $extravak );
 
@@ -324,7 +311,6 @@
 		
 		private function insertFaculty( $facultyName )
 		{
-			
 			
 			$this->db->insert( "faculteiten", array( "faculty_name" => $facultyName ) );
 			
