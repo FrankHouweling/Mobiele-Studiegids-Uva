@@ -65,6 +65,8 @@
 			
 			$query	=	$query . implode(" AND ", $tus);
 			
+			echo $query;
+			
 			// Query uitvoeren
 		
 	        $query = $this->db->query( $query );
