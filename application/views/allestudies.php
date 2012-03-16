@@ -5,7 +5,7 @@
                      
                      <?php foreach($programName as $studie): ?>
 
-                    <li><a href="../../ziestudie/studie/<?=$studie['id']?>"><?=$studie['programName']?>  (<?php echo $studie['degree']?>)</a></li>
+                    <li><a href="../../ziestudie/studie/<?=$studie['id']?>"><?=$studie['programName']?> <span class="ui-li-count"><?php echo $studie['degree']?></span></a></li>
 
                     <?php endforeach; ?>
                     
