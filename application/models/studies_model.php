@@ -29,7 +29,7 @@
 			
 			$ret 	=	array();
 			
-			$query	=	$this->db->query( "SELECT vak_id FROM vakken" );
+			$query	=	$this->db->query( "SELECT vak_id FROM vakken WHERE vak_name NOT LIKE ('%wiskunde%') AND vak_name NOT LIKE ('%hbo%')" );
 			
 			foreach( $query->result_array() as $res )
 			{
@@ -42,6 +42,17 @@
 			
 		}
 		
+		private function studieNaamToVakId( $studieNaam )
+		{
+		
+			$query	=	$this->db->query( "SELECT vak_id FROM vakken WHERE vak_name = '" . $studieNaam . "'" );
+			
+			$res	=	$query->result_array();
+			
+			return $res[0]['vak_id'];
+			
+		}
+		
 		public function getFiltered( $get )
 	    {
 	    
@@ -51,6 +62,34 @@
 			//	Query opbouwen
 			
 			$tus	=	array();
+			
+			// Wiskunde probleem..
+			
+			switch( $get['wiskunde'] )
+			{
+				
+				case "a":
+					
+					$kannietdoen	=	array("B");
+					
+				break;
+				case "b":
+				
+					$kannietdoen		=	array();
+				
+				break;
+				case "c":
+					$kannietdoen	=	array("A","B");
+				break;
+				
+			}
+			
+			foreach( $kannietdoen as $kndn  )
+			{
+				
+				$tus[]	= "( needed_vakken.studie_id = project1.id AND needed_vakken.vak_id != " . $this->studieNaamToVakId( "wiskunde-" . $kndn ) . "  )";
+				
+			}
 			
 			foreach( $this->getAllVakIds() as $vakid )
 			{
