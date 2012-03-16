@@ -23,6 +23,24 @@
 		    
 		}
 		
+		private function getAllVakIds()
+		{
+			
+			$ret 	=	array();
+			
+			$query	=	$this->db->query( "SELECT vak_id FROM vakken" );
+			
+			foreach( $query->result_array() as $res )
+			{
+				
+				$ret[]	=	$res;
+				
+			}
+			
+			return $ret;
+			
+		}
+		
 		public function getFiltered( $get )
 	    {
 	    
