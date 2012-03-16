@@ -9,9 +9,9 @@ class Faculteiten_model extends CI_Model {
         parent::__construct();
     }
     
-   
-    /*
-     * Private function add
+    /**
+     * 
+	 * Private function add()
      *
      * add faculteiten in faculteiten table on database
      */
@@ -28,8 +28,9 @@ class Faculteiten_model extends CI_Model {
 		
      }
     
-    /*
-     * Public function getFaculteiten
+    /**
+     * 
+	 * Public function getFaculteitein()
      *
      * get faculteiten from faculteiten table on database
      */
@@ -43,9 +44,10 @@ class Faculteiten_model extends CI_Model {
    
     }
     
-    
-    /*
-     * Public function getResultaten 
+
+    /**
+     * 
+	 * Public function getResultaten( $facultyID )
      *
      * show results (studies) from all faculteiten with given id
      */

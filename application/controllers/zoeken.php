@@ -11,8 +11,9 @@ class Zoeken extends CI_Controller {
 	}
 	
 	/*
-	 * Public function allestudies
+	 * Public function allestudies()
 	 *
+	 * Display all studies in the database
 	 *
 	 */
 	
@@ -30,8 +31,9 @@ class Zoeken extends CI_Controller {
 	}
 	
 	/*
-	 * Private function facultyShortcodeToFacultyName
+	 * Private function facultyShortcodeToFacultyName( $shortcode )
 	 *
+	 * Transforms a facultyshortcode (f.a. NWI) to a full name (f.a. Natuurwetenschappen Wiskunde en Informatica)
 	 *
 	 */
 	 
@@ -54,8 +56,9 @@ class Zoeken extends CI_Controller {
 	}
 	
 	/*
-	 * Public function faculteit
+	 * Public function faculteit()
 	 *
+	 * If there is a faculty given it will display all studies in this faculty; otherwise it will display a list with all faculty's
 	 *
 	 */
 	
@@ -99,6 +102,7 @@ class Zoeken extends CI_Controller {
 	/*
 	 * Public function toelatingseisen
 	 *
+	 * If vakken are given it will filter the studies to the given toelatingseisen, otherwise it will display a form with the different toelatingseisen
 	 *
 	 */
 	
@@ -138,6 +142,7 @@ class Zoeken extends CI_Controller {
 	/*
 	 * Public function keyword
 	 *
+	 * If a query is given it will look for the given query in all studie descriptions. Otherwise it will display a simple search form.
 	 *
 	 */
 	
@@ -170,6 +175,7 @@ class Zoeken extends CI_Controller {
 	/*
 	 * Public function laatstbekeken
 	 *
+	 * 
 	 *
 	 */
 	
