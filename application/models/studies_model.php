@@ -134,7 +134,7 @@
 				
 			}
 			
-			$query	=	" ( SELECT COUNT(*) FROM needed_vakken WHERE studie_id = project1.id ) = 0
+			$query	.=	" ( SELECT COUNT(*) FROM needed_vakken WHERE studie_id = project1.id ) = 0
 						GROUP BY
 						project1.id";
 		
