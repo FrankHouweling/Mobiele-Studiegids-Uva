@@ -36,7 +36,7 @@ class Favorieten extends CI_Controller {
 			
 		}
 			
-		header( "Location: ../../index.php" );
+		header( "Location: ../../../index.php" );
 		
 	}
 	
@@ -48,14 +48,14 @@ class Favorieten extends CI_Controller {
 	 * 
 	 */
 	
-	public function remove( $studieId )
+	public function remove( )
 	{
 		
 		$studieId	=	$this->uri->segment(3);
 		
-		$_SESSION['favorieten']	=	remove_element( $_SESSION['favorieten'], $sutdieId );
+		$_SESSION['favorieten']	=	$this->remove_element( $_SESSION['favorieten'], $studieId );
 		
-		header( "Location: ../../index.php" );
+		header( "Location: ../../../index.php/zoeken/favorieten/" );
 		
 	}
 	
