@@ -44,12 +44,16 @@
 		public function getFiltered( $get )
 	    {
 	    
+			var_dump($get);
+			
 			$query	=	"SELECT * FROM project1, needed_vakken, vakken WHERE";
 		
 			//	Query opbouwen
 			
 			foreach( $this->getAllVakIds() as $vakid )
 			{
+				
+				echo $vakid;
 				
 				if( isset( $get['checkbox-' . $vakid] ) )
 				{
