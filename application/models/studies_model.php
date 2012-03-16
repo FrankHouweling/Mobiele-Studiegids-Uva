@@ -45,7 +45,7 @@
 	    {
 	    
 			
-			$query	=	"SELECT * FROM project1, needed_vakken";
+			$query	=	"SELECT * FROM project1";
 		
 			//	Query opbouwen
 			
