@@ -8,6 +8,7 @@
 	        parent::__construct();
 	    }
 		
+		
 		/*
 		 * 
 		 * Public function inputindb( $studieobject )
@@ -20,12 +21,14 @@
 		{
 			
 			// Create empty data array	
+			
 			$data =	array();
 			
 			$toegestaneExtraVakken = array( "wiskunde-A", "wiskunde-B", "natuurkunde", "scheikunde", "biologie", "hbo-propedeuse", "universitaire-bachelor", "latijn", "grieks");
 			
 			
 			// Put data in array
+			
 			switch( $studieobject->programClassification->degree )
 			{
 				
@@ -89,6 +92,7 @@
 			{
 				
 				// Multiple? Just get the first one!
+				
 				$data["studyCluster"]	=	(string)$studieobject->programClassification->studyCluster[0];		//	Bijv. health care
 				
 			}
@@ -101,6 +105,7 @@
 			
 						
 			// Get the main instruction language
+			
 			$highestpercentage = 0;
 			
 			foreach( $studieobject->programCurriculum->instructionLanguage as $instructionLanguage )
@@ -117,13 +122,15 @@
 			}
 						
 			
-			// Loop through all program descriptions..
+			// Loop through all program descriptions
+			
 			foreach( $studieobject->programDescriptions->programDescription as $description )
 			{
 				
 				$values	= $description->attributes();
 				
-				// Look for the dutch program description..
+				// Look for the dutch program description
+				
 				if( $values["lang"] = "nl" )
 				{
 					
@@ -134,7 +141,8 @@
 			}
 			
 			
-			// If there are multiple names for multiple languages, look for the dutch one...
+			// If there are multiple names for multiple languages, look for the dutch one
+			
 			if( is_array( $studieobject->programDescriptions->programName ) )
 			{
 			
@@ -143,7 +151,8 @@
 				foreach( $studieobject->programDescriptions->programName as $tmpprog )
 				{
 					
-					// If the language of the programname is dutch, put it in the specified variable.
+					// If the language of the programname is dutch, put it in the specified variable
+					
 					if( $tmpprog->attributes()->lang == "nl" )
 					{
 						
@@ -164,23 +173,27 @@
 			$data["facultyId"]		=	$this->getFacultyId( (string)$studieobject->programFree->facultyId );
 				
 			
-			// Insert all the data to the Database.
+			// Insert all the data to the Database
+			
 	        $this->db->insert('project1', $data);
 			
 			$studieid		=	$this->db->insert_id();
 			
 			
 			// Check for the admissionable VWO-profiles
+			
 			$curExtraVakken	=	array();
 			
 			foreach( $studieobject->programClassification->admissableProgram as $program )
 			{
 				
 				// Removing + EN and OF and replace them by a whitespace character
+				
 				$tmpvakken	=	str_replace( "+", " ", str_replace( "en", " ",  str_replace( "of", " ", $program->additionalSubject[0] )));
 				
 				
 				// Remove those () thingies
+				
 				foreach( array("(",")",".",",") as $specialchars )
 				{
 					
@@ -189,6 +202,7 @@
 				}
 				
 				// BUG FIX for Wiskunde A, Wiskunde B and Wiskunde C (remove spaces in names)
+				
 				foreach( array( "wiskunde A", "wiskunde B", "wiskunde C", "universitaire bachelor" ) as $vak )
 				{
 					
@@ -198,6 +212,7 @@
 				
 				
 				// Remove double whitespace
+				
 				while( strpos( $tmpvakken , '  ' ) !== false)
 				{
 					$tmpvakken = str_replace( '  ' , ' ' , $tmpvakken );
@@ -205,6 +220,7 @@
 				
 				
 				// Now add all the vakken in an array
+				
 				foreach( explode( " ", trim( $tmpvakken ) ) as $vak )
 				{
 					
@@ -221,6 +237,7 @@
 			
 			
 			// Now loop through all the needed classes (add them to the DB if needed) and link them
+			
 			foreach( $curExtraVakken as $extravak )
 			{
 			
@@ -236,7 +253,7 @@
 					
 				}
 				
-				// Insert the link in the table..
+				// Insert the link in the table
 				
 				$this->db->insert( "needed_vakken", array( "vak_id" => $vakid, "studie_id" => $studieid ) );
 				
@@ -248,7 +265,7 @@
 		 * 
 		 * Private function getVakIdByName
 		 * 
-		 * Returns the ID of a vak by the name, or returns false if it can't find any.
+		 * Returns the ID of a vak by the name, or returns false if it can't find any
 		 * 
 		 */
 
@@ -284,8 +301,7 @@
 			// First check if it already exists..
 			$result = $this->db->query( "SELECT * FROM faculteiten WHERE faculty_name = '" . mysql_real_escape_string($facultyName) . "'" );
 			
-			if( count($result->result_array()) == 0 )	// TODO I don't know if this function works this way but let's try
-			{
+			if( count($result->result_array()) == 0 )	
 				
 				return $this->insertFaculty( $facultyName );
 				

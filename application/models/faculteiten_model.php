@@ -9,6 +9,7 @@ class Faculteiten_model extends CI_Model {
         parent::__construct();
     }
     
+   
     /**
      * add faculteiten in faculteiten database
      *
@@ -23,6 +24,7 @@ class Faculteiten_model extends CI_Model {
 			$this->inputInDb( $faculteiten );	
 		
 		}
+		
      }
     
     /**
@@ -51,6 +53,7 @@ class Faculteiten_model extends CI_Model {
 	     return $result->result_array();
     
     } 
+    
 }
 
 ?>

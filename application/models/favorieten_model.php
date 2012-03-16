@@ -10,6 +10,7 @@
 	    
 	    }
 	    
+	    
 		/*
 		 * 
 		 * Private function getDataByIDs( $array )
@@ -17,7 +18,6 @@
 		 * Get's the info of the studies associated by the given array of ID's
 		 * 
 		 */
-		
 		
 		function getDataByIDs( $ids )
 		{
@@ -38,7 +38,6 @@
 			}
 			
 		}
-		
-	    
+			    
 	}	    
 ?>

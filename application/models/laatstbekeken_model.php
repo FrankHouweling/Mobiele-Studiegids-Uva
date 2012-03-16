@@ -19,7 +19,6 @@
 		 * 
 		 */
 		
-		
 		function getDataByIDs( $ids )
 		{
 			
@@ -28,7 +27,7 @@
 			return $get->result_array();
 			
 		}
-		
-	    
-}	    
+			    
+}	
+    
 ?>

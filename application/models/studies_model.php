@@ -10,12 +10,14 @@
 	        
 	    }
 		
-        /**
-        * get all studies from database
+		
+       /*
+        *   Public function getAll 
         *
+        *   get all studies from database 
         */
         
-		public function getAll()
+        public function getAll()
 		{
 		   
 		    $query = $this->db->get_where('project1');
@@ -23,6 +25,12 @@
 	        return $query->result_array();
 		    
 		}
+		
+	   /*
+        *   Private function getAllVakIds  
+        *
+        *   get all vak Id's from database for filter on toelatingseisen
+        */
 		
 		private function getAllVakIds()
 		{
@@ -41,6 +49,12 @@
 			return $ret;
 			
 		}
+		
+	   /*
+        *   Private function studieNaamToVakId 
+        *
+        *   
+        */
 		
 		private function studieNaamToVakId( $studieNaam )
 		{
@@ -95,10 +109,12 @@
 			{
 				
 				//	Krijg alle vakken die je NIET hebt gedaan
+				
 				if( !isset( $get['checkbox-' . $vakid] ) )	
 				{
 					
 					// Haal nu alle studies op die dat NIET nodig hebben
+					
 					$tus[]	= "( needed_vakken.studie_id = project1.id AND needed_vakken.vak_id != " . $vakid . "  )";
 					
 				}
@@ -116,6 +132,7 @@
 	
 	
 			// Query uitvoeren
+			
 	        $query = $this->db->query( $query );
 	        
 	        return $query->result_array();

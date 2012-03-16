@@ -105,7 +105,7 @@ class Zoeken extends CI_Controller {
     public function toelatingseisen()
 	{
 	
-	    if( $this->input->get("wiskunde") ) //  TODO if there is POST-data given get the results
+	    if( $this->input->get("wiskunde") ) 
 	    {
 	    
 	        $this->load->model('Studies_model');
