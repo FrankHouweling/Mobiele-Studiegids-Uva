@@ -144,11 +144,20 @@ class Zoeken extends CI_Controller {
 	public function keyword()
 	{
 	
-		$data = array();	//	TODO!
+		if( !isset( $this->input->get("q") ) )
+		{
+				
+			$this->load->view( "header", array( "page" => "Studies Zoeken", "pagetitle" => "Studies Zoeken" ) );
+			$this->load->view( "zoeken", $data);
+			$this->load->view( "footer" );	
+			
+		}
+		else
+		{
 		
-		$this->load->view( "header", array( "page" => "Studies Zoeken", "pagetitle" => "Studies Zoeken" ) );
-		$this->load->view( "zoeken", $data);
-		$this->load->view( "footer" );
+			// HIER DE VIEW INLADEN!
+			
+		}
 		
 	}
 	
