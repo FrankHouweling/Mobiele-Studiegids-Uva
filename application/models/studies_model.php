@@ -45,7 +45,7 @@
 	    {
 	    
 			
-			$query	=	"SELECT * FROM project1, needed_vakken WHERE";
+			$query	=	"SELECT * FROM project1, needed_vakken";
 		
 			//	Query opbouwen
 			
@@ -65,7 +65,13 @@
 				
 			}
 			
-			$query	=	$query . implode(" AND ", $tus);
+			if( !count($tus) == 0 )
+			{
+				
+				$query	=	$query . " WHERE " . implode(" AND ", $tus);
+				
+			}
+	
 			// Query uitvoeren
 		
 	        $query = $this->db->query( $query );
