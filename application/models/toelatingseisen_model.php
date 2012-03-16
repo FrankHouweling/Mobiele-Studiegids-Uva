@@ -22,13 +22,5 @@
         
         } 
 	    
-	public function get_filteredStudies()
-	{
-	    $this->db->select('title, content, date');
-
-        $query = $this->db->get('mytable');
-	
-	}    
-	    
 }	    
 ?>

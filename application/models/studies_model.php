@@ -1,6 +1,6 @@
 <?php
 
-	class Allestudies_model extends CI_Model {
+	class Studies_model extends CI_Model {
 		
 		function __construct()
 	    {
@@ -22,6 +22,14 @@
 	        return $query->result_array();
 		    
 		}
+		
+		public function getFiltered()
+	    {
+	    
+	        $query = $this->db->get_where('project1');
+	        return $query->result_array();
+	        
+	    }
 }
 
 ?>

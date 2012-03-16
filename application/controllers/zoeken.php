@@ -13,8 +13,9 @@ class Zoeken extends CI_Controller {
 	public function allestudies()
 	{
 	
-	    $this->load->model('Allestudies_model');
-	    $data   = $this->Allestudies_model->getall();    
+	    $this->load->model('Studies_model');
+	    
+	    $data = $this->Studies_model->getall();    
 	    	
 		$this->load->view( "header", array( "page" => "Alle Studies - Studies Zoeken", "pagetitle" => "Alle Studies" ) );
 		$this->load->view( "allestudies", array("programName" => $data));
@@ -45,12 +46,12 @@ class Zoeken extends CI_Controller {
 	
 	    $this->load->model('Faculteiten_model');
 	
-	    $facultyId  = $this->uri->segment( 3 );
+	    $facultyId = $this->uri->segment( 3 );
 	
 	    if( $facultyId !== false )     // trigger when there is GET data
 	    {
 
-	        $data   = $this->Faculteiten_model->get_resultaten( $facultyId );
+	        $data = $this->Faculteiten_model->get_resultaten( $facultyId );
 	        
 	        $this->load->view( "header", array( "page" => "Alle Studies - per Faculteit ", "pagetitle" => "Studies op Faculteit" ) );
 		    $this->load->view( "resultaten", array("programName" => $data));
@@ -60,7 +61,7 @@ class Zoeken extends CI_Controller {
 	    else
 	    {
 	   
-		    $data   = $this->Faculteiten_model->get_faculteiten();	
+		    $data = $this->Faculteiten_model->get_faculteiten();	
 		
 		    foreach( $data as $id => $value )
 	        {
@@ -80,10 +81,18 @@ class Zoeken extends CI_Controller {
     public function toelatingseisen()
 	{
 	
-	    if( $this->input->get("checkbox-3") ) //  TODO if there is POST-data given get the results
+	    if( $this->input->get("wiskunde") ) //  TODO if there is POST-data given get the results
 	    {
 	    
-	        var_dump( $this->input->get( NULL ) );
+	        $this->load->model('Studies_model');
+	        
+	        $data = $this->Studies_model->getFiltered();
+	    
+	        $this->load->view( "header", array( "page" => "Alle Studies - op Toelatingseisen", "pagetitle" => "Studies op Toelatingseisen" ) );
+		    $this->load->view( "allestudies", array("programName" => $data));
+		    $this->load->view( "footer" );
+	 
+	        
 	    
 	    
 	    }
@@ -92,7 +101,7 @@ class Zoeken extends CI_Controller {
 	    
 	        $this->load->model('Toelatingseisen_model');
 	    
-	        $data   = $this->Toelatingseisen_model->get_toelatingseisen(); 
+	        $data = $this->Toelatingseisen_model->get_toelatingseisen(); 
 		
 		    $this->load->view( "header", array( "page" => "Alle Studies - op Toelatingseisen", "pagetitle" => "Studies op Toelatingseisen" ) );
 		    $this->load->view( "toelatingseisen", array("vak_name" => $data));
@@ -105,7 +114,7 @@ class Zoeken extends CI_Controller {
 	public function keyword()
 	{
 	
-		$data   = array();	//	TODO!
+		$data = array();	//	TODO!
 		
 		$this->load->view( "header", array( "page" => "Studies Zoeken", "pagetitle" => "Studies Zoeken" ) );
 		$this->load->view( "zoeken", $data);
@@ -127,7 +136,7 @@ class Zoeken extends CI_Controller {
 			
 		}
 	
-		$data	=	$this->fubar->getDataByIDs( $_SESSION['lastSeen'] );
+		$data = $this->fubar->getDataByIDs( $_SESSION['lastSeen'] );
 		
 		$this->load->view( "header", array( "page" => "Laatst bekeken Studies", "pagetitle" => "Laatst Bekeken" ) );
 		$this->load->view( "allestudies", array("programName"=>$data));
@@ -140,7 +149,7 @@ class Zoeken extends CI_Controller {
 		
 		$this->load->model('Laatstbekeken_model','fubar');
 		
-		$data	=	$this->fubar->getDataByIDs( $_SESSION['favorieten'] );
+		$data = $this->fubar->getDataByIDs( $_SESSION['favorieten'] );
 		
 		$this->load->view( "header", array( "page" => "Laatst bekeken Studies", "pagetitle" => "Laatst Bekeken" ) );
 		$this->load->view( "favorieten", array("programName"=>$data));
