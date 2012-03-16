@@ -33,7 +33,7 @@
 			foreach( $query->result_array() as $res )
 			{
 				
-				$ret[]	=	$res;
+				$ret[]	=	$res["vak_id"];
 				
 			}
 			
@@ -44,7 +44,6 @@
 		public function getFiltered( $get )
 	    {
 	    
-			var_dump($get);
 			
 			$query	=	"SELECT * FROM project1, needed_vakken, vakken WHERE";
 		
@@ -52,8 +51,6 @@
 			
 			foreach( $this->getAllVakIds() as $vakid )
 			{
-				
-				echo $vakid;
 				
 				if( isset( $get['checkbox-' . $vakid] ) )
 				{
