@@ -45,7 +45,7 @@
 	    {
 	    
 			
-			$query	=	"SELECT * FROM project1, needed_vakken, vakken WHERE";
+			$query	=	"SELECT * FROM project1, needed_vakken WHERE";
 		
 			//	Query opbouwen
 			
@@ -57,7 +57,7 @@
 				if( isset( $get['checkbox-' . $vakid] ) )
 				{
 					
-					$tus[]	= "( needed_vakken.studie_id = project1.id AND vak_id = " . $vakid . "  )";
+					$tus[]	= "( needed_vakken.studie_id = project1.id AND needed_vakken.vak_id = " . $vakid . "  )";
 					
 				}
 				
