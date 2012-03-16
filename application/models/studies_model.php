@@ -54,10 +54,12 @@
 			foreach( $this->getAllVakIds() as $vakid )
 			{
 				
-				if( isset( $get['checkbox-' . $vakid] ) )
+				//	Krijg alle vakken die je NIET hebt gedaan
+				if( !isset( $get['checkbox-' . $vakid] ) )	
 				{
 					
-					$tus[]	= "( needed_vakken.studie_id = project1.id AND needed_vakken.vak_id = " . $vakid . "  )";
+					// Haal nu alle studies op die dat NIET nodig hebben
+					$tus[]	= "( needed_vakken.studie_id = project1.id AND needed_vakken.vak_id != " . $vakid . "  )";
 					
 				}
 				
