@@ -24,6 +24,7 @@
 		<!-- For Drag & Drop action -->
 		<script type="text/javascript" src="/client/jquery-ui.min.js"></script>
 		
+		<script type="text/javascript" src="/client/custom.js"></script>
 			
 	</head>
 	<body>
